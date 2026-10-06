@@ -3,22 +3,34 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Halftime Cuts — Sports Barbershop in Pasadena, CA</title>
-  <meta name="description" content="Halftime Cuts is East Pasadena’s sports barbershop since 2005. Precision fades, tapers, hot towel shaves and beard work on Foothill Blvd — with the game on. Book online.">
+  <title>Halftime Cuts | Barbershop in Pasadena, CA – Fades &amp; Shaves</title>
+  <meta name="description" content="Halftime Cuts is East Pasadena’s sports barbershop since 2005 — fades, tapers, kids cuts, beard trims &amp; hot towel shaves on Foothill Blvd. Book online today.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#FFFFFF">
   <link rel="canonical" href="https://www.halftimecuts.com/">
 
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="Halftime Cuts">
-  <meta property="og:title" content="Halftime Cuts — Sports Barbershop in Pasadena, CA">
+  <meta property="og:title" content="Halftime Cuts | Barbershop in Pasadena, CA">
   <meta property="og:description" content="The best seat in the house. Fades, tapers, hot towel shaves and beard work — with the game on. East Pasadena since 2005.">
   <meta property="og:url" content="https://www.halftimecuts.com/">
   <meta property="og:image" content="https://www.halftimecuts.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Halftime Cuts shield logo with the tagline “Best seat in the house.”">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Halftime Cuts | Barbershop in Pasadena, CA">
+  <meta name="twitter:description" content="The best seat in the house. Fades, tapers, hot towel shaves and beard work — with the game on. East Pasadena since 2005.">
+  <meta name="twitter:image" content="https://www.halftimecuts.com/assets/img/og-image.png">
+  <meta name="twitter:image:alt" content="Halftime Cuts shield logo with the tagline “Best seat in the house.”">
+  <meta name="geo.region" content="US-CA">
+  <meta name="geo.placename" content="Pasadena">
 
   <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
   <link rel="preload" href="assets/fonts/archivo-latin-wdth-italic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/img/logo.svg" as="image" type="image/svg+xml">
@@ -29,53 +41,115 @@
     (function (d, w) {
       var h = d.documentElement;
       h.classList.add('js');
+      // Keep preview copies (e.g. GitHub Pages) out of search results; only the real domain should rank.
+      if (/\.github\.io$/i.test(w.location.hostname)) {
+        var m = d.createElement('meta'); m.name = 'robots'; m.content = 'noindex'; d.head.appendChild(m);
+      }
       var reduce = w.matchMedia && w.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var paused = false;
+      try { paused = w.localStorage.getItem('ht-paused') === '1'; } catch (e) {}
+      if (paused) h.classList.add('is-paused');
       if (reduce) return;
       h.classList.add('motion');
       var seen = false;
-      try { seen = w.sessionStorage.getItem('ht-intro') === '1'; } catch (e) {}
-      if (!seen) h.classList.add('intro');
-      // Safety net: if the animation scripts never start, show everything.
-      w.setTimeout(function () { if (!w.__htReady) h.classList.remove('motion', 'intro'); }, 4000);
+      try { seen = w.sessionStorage.getItem('ht-intro') === '1'; w.sessionStorage.setItem('ht-intro', '1'); } catch (e) { seen = true; }
+      if (!seen && !paused) h.classList.add('intro');
+      // Safety net: if the scroll-animation scripts never start, show everything.
+      w.setTimeout(function () { if (!w.__htReady) h.classList.remove('motion'); }, 4000);
     })(document, window);
   </script>
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "HairSalon",
-    "name": "Halftime Cuts",
-    "description": "Sports-themed barbershop in East Pasadena since 2005. Haircuts, fades, beard trims and hot towel shaves.",
-    "url": "https://www.halftimecuts.com/",
-    "logo": "https://www.halftimecuts.com/assets/img/logo-original.png",
-    "image": "https://www.halftimecuts.com/assets/img/og-image.png",
-    "telephone": "+1-626-796-4253",
-    "email": "halftimecuts@icloud.com",
-    "priceRange": "$$",
-    "foundingDate": "2005",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "3205 E Foothill Blvd",
-      "addressLocality": "Pasadena",
-      "addressRegion": "CA",
-      "postalCode": "91107",
-      "addressCountry": "US"
-    },
-    "openingHoursSpecification": [{
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      "opens": "09:00",
-      "closes": "18:00"
-    }],
-    "sameAs": [
-      "https://www.instagram.com/halftimecuts/",
-      "https://www.facebook.com/HalftimeCuts/",
-      "https://www.yelp.com/biz/halftime-cuts-pasadena"
-    ],
-    "potentialAction": {
-      "@type": "ReserveAction",
-      "target": "https://www.halftimecuts.com/s/appointments"
-    }
+    "@graph": [
+      {
+        "@type": "HairSalon",
+        "@id": "https://www.halftimecuts.com/#business",
+        "name": "Halftime Cuts",
+        "alternateName": "Halftime Cuts Barbershop",
+        "description": "Sports-themed barbershop in East Pasadena since 2005. Men’s haircuts, fades, tapers, kids cuts, beard trims and hot towel shaves on Foothill Blvd.",
+        "url": "https://www.halftimecuts.com/",
+        "logo": "https://www.halftimecuts.com/assets/img/logo-original.png",
+        "image": ["https://www.halftimecuts.com/assets/img/og-image.png", "https://www.halftimecuts.com/assets/img/logo-original.png"],
+        "telephone": "+1-626-796-4253",
+        "email": "halftimecuts@icloud.com",
+        "priceRange": "$$",
+        "currenciesAccepted": "USD",
+        "foundingDate": "2005",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "3205 E Foothill Blvd",
+          "addressLocality": "Pasadena",
+          "addressRegion": "CA",
+          "postalCode": "91107",
+          "addressCountry": "US"
+        },
+        "hasMap": "https://www.google.com/maps/search/?api=1&query=Halftime+Cuts+3205+E+Foothill+Blvd+Pasadena+CA+91107",
+        "areaServed": [
+          { "@type": "City", "name": "Pasadena" },
+          { "@type": "City", "name": "Altadena" },
+          { "@type": "City", "name": "Sierra Madre" },
+          { "@type": "City", "name": "Arcadia" }
+        ],
+        "openingHoursSpecification": [{
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        }],
+        "sameAs": [
+          "https://www.instagram.com/halftimecuts/",
+          "https://www.facebook.com/HalftimeCuts/",
+          "https://www.yelp.com/biz/halftime-cuts-pasadena"
+        ],
+        "potentialAction": {
+          "@type": "ReserveAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://www.halftimecuts.com/s/appointments",
+            "actionPlatform": ["https://schema.org/DesktopWebPlatform", "https://schema.org/MobileWebPlatform"]
+          },
+          "result": { "@type": "Reservation", "name": "Barber appointment" }
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Barber services",
+          "itemListElement": [
+            { "@type": "Offer", "price": "45", "priceCurrency": "USD", "itemOffered": { "@type": "Service", "name": "Haircut", "description": "Fades, tapers or scissor work. About 30 minutes." } },
+            { "@type": "Offer", "price": "65", "priceCurrency": "USD", "itemOffered": { "@type": "Service", "name": "Haircut + Beard Trim", "description": "Haircut plus a clipper beard trim. About 1 hour." } },
+            { "@type": "Offer", "price": "80", "priceCurrency": "USD", "itemOffered": { "@type": "Service", "name": "Haircut + Full Beard Service", "description": "Haircut plus beard trim, shape, lineup and neck shave. About 1 hour." } },
+            { "@type": "Offer", "price": "80", "priceCurrency": "USD", "itemOffered": { "@type": "Service", "name": "Haircut + Hot Towel Shave", "description": "Haircut finished with a hot towel shave. About 1 hour." } },
+            { "@type": "Offer", "price": "25", "priceCurrency": "USD", "itemOffered": { "@type": "Service", "name": "Beard Trim", "description": "Clipper beard trim. About 30 minutes." } },
+            { "@type": "Offer", "price": "40", "priceCurrency": "USD", "itemOffered": { "@type": "Service", "name": "Full Beard Service", "description": "Beard trim, shape, lineup and neck shave." } },
+            { "@type": "Offer", "price": "50", "priceCurrency": "USD", "itemOffered": { "@type": "Service", "name": "Hot Towel Shave", "description": "Hot towels, warm lather and a close finish. About 30 minutes." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Kids Haircut" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Head Shave" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Neck Cleanup" } }
+          ]
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.halftimecuts.com/#website",
+        "url": "https://www.halftimecuts.com/",
+        "name": "Halftime Cuts",
+        "inLanguage": "en-US",
+        "publisher": { "@id": "https://www.halftimecuts.com/#business" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.halftimecuts.com/#faq",
+        "mainEntity": [
+          { "@type": "Question", "name": "How do I book an appointment at Halftime Cuts?", "acceptedAnswer": { "@type": "Answer", "text": "Book online any time through our Square booking page — pick your barber, your service and a time that works. Prefer to talk to someone? Call us at (626) 796-4253." } },
+          { "@type": "Question", "name": "How much is a haircut?", "acceptedAnswer": { "@type": "Answer", "text": "A haircut is $45 and takes about 30 minutes. A haircut with a beard trim is $65, and a haircut with the full beard service or a hot towel shave is $80." } },
+          { "@type": "Question", "name": "Do you cut kids’ hair?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Kids cuts are available — you’ll see current pricing and open times when you book. Stef is a favorite with younger clients." } },
+          { "@type": "Question", "name": "What are your hours?", "acceptedAnswer": { "@type": "Answer", "text": "We’re open Tuesday through Saturday, 9am to 6pm, and closed on Sunday and Monday." } },
+          { "@type": "Question", "name": "Where is Halftime Cuts located?", "acceptedAnswer": { "@type": "Answer", "text": "We’re at 3205 E Foothill Blvd, Pasadena, CA 91107 — in East Pasadena near the 210, a few minutes from Sierra Madre, Arcadia and Altadena." } },
+          { "@type": "Question", "name": "Do you offer beard trims and hot towel shaves?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We do beard trims ($25), a full beard service with shape, lineup and neck shave ($40), and classic hot towel shaves ($50)." } }
+        ]
+      }
+    ]
   }
   </script>
 </head>
@@ -94,6 +168,8 @@
     <symbol id="i-tv" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10" width="38" height="25" rx="3"/><path d="M17 42h14M24 35v7M17 4l7 6 7-6"/><circle cx="24" cy="22.5" r="6"/><path d="M18 22.5h12M24 16.5v12"/></g></symbol>
     <symbol id="i-towel" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4c-3 3 3 5 0 8s3 5 0 8M24 4c-3 3 3 5 0 8s3 5 0 8M32 4c-3 3 3 5 0 8s3 5 0 8"/><rect x="7" y="26" width="34" height="16" rx="8"/><path d="M14 34h20"/></g></symbol>
     <symbol id="i-tag" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 26 26 6h15v15L21 41a3 3 0 0 1-4.2 0L6 30.2a3 3 0 0 1 0-4.2Z"/><circle cx="33" cy="14" r="3"/><path d="m17 24 7 7M21 20l7 7"/></g></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8.5 5.5v13M15.5 5.5v13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5L8 5.5Z" fill="currentColor"/></symbol>
     <symbol id="i-whistle" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="14" r="5.5"/><path d="M13 9.5 21 6v4l-6.6 2.1M3 6l2 2M7 3l1 2.6"/></g></symbol>
   </svg>
 
@@ -103,7 +179,7 @@
       <img class="preloader__logo" src="assets/img/logo.svg" alt="" width="616" height="482">
       <div class="preloader__board">
         <span class="preloader__label">1st half</span>
-        <span class="preloader__clock"><span data-clock>00</span>:00</span>
+        <span class="preloader__clock"><span class="preloader__clock-n"></span>:00</span>
       </div>
       <p class="preloader__word">Halftime</p>
     </div>
@@ -124,14 +200,18 @@
       </nav>
 
       <div class="header__actions">
-        <a class="icon-btn" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" aria-label="Halftime Cuts on Instagram">
+        <button class="icon-btn icon-btn--motion" type="button" aria-pressed="false" data-motion-toggle>
+          <svg class="icon-pause" aria-hidden="true"><use href="#i-pause"/></svg><svg class="icon-play" aria-hidden="true"><use href="#i-play"/></svg>
+          <span class="visually-hidden">Pause animations</span>
+        </button>
+        <a class="icon-btn" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" aria-label="Halftime Cuts on Instagram (opens in new tab)">
           <svg aria-hidden="true"><use href="#i-instagram"/></svg>
         </a>
         <a class="btn btn--orange btn--sm" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book data-magnetic>
           <span>Book Now</span><svg aria-hidden="true"><use href="#i-arrow"/></svg>
-        </a>
+        <span class="visually-hidden"> (opens in new tab)</span></a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
-          <span class="visually-hidden">Menu</span>
+          <span class="visually-hidden" data-menu-label>Open menu</span>
           <span class="menu-toggle__bar"></span><span class="menu-toggle__bar"></span>
         </button>
       </div>
@@ -148,27 +228,33 @@
     <div class="mobile-menu__foot">
       <a class="btn btn--orange btn--block btn--lg" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book>
         <span>Book Now</span><svg aria-hidden="true"><use href="#i-arrow"/></svg>
-      </a>
+      <span class="visually-hidden"> (opens in new tab)</span></a>
       <div class="mobile-menu__meta">
         <a href="tel:+16267964253">(626) 796-4253</a>
-        <a href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener">Instagram</a>
+        <button class="text-btn" type="button" aria-pressed="false" data-motion-toggle><span class="text-btn__icon" aria-hidden="true"></span>Pause animations</button>
+        <a href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener">Instagram<span class="visually-hidden"> (opens in new tab)</span></a>
       </div>
     </div>
   </div>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
     <!-- ============ HERO ============ -->
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="hero__field" aria-hidden="true"></div>
       <div class="hero__grid wrap">
-        <p class="eyebrow hero__eyebrow" data-hero-fade><span class="live-dot" aria-hidden="true"></span>Pasadena’s sports barbershop · Est. 2005</p>
+        <div class="hero__eyebrow" data-hero-fade style="--d:.1s">
+          <span class="live-dot" aria-hidden="true"></span>
+          <h1 class="eyebrow" id="hero-title">Halftime Cuts <span aria-hidden="true">·</span> Pasadena’s sports barbershop</h1>
+        </div>
 
-        <h1 class="hero__title" id="hero-title">
-          <span class="visually-hidden">Halftime Cuts, barbershop in Pasadena — </span>
-          <span class="hero__line hero__line--1"><span data-split="chars">Best seat</span></span>
-          <span class="hero__line hero__line--2"><span data-split="chars">in the</span></span>
-          <span class="hero__line hero__line--3"><span data-split="chars">house.</span></span>
-        </h1>
+        <p class="hero__title">
+          <span class="visually-hidden">Best seat in the house.</span>
+          <span class="hero__lines" aria-hidden="true">
+            <span class="hero__line hero__line--1"><span class="w"><span class="c" style="--i:0">B</span><span class="c" style="--i:1">e</span><span class="c" style="--i:2">s</span><span class="c" style="--i:3">t</span></span> <span class="w"><span class="c" style="--i:4">s</span><span class="c" style="--i:5">e</span><span class="c" style="--i:6">a</span><span class="c" style="--i:7">t</span></span></span>
+            <span class="hero__line hero__line--2"><span class="w"><span class="c" style="--i:8">i</span><span class="c" style="--i:9">n</span></span> <span class="w"><span class="c" style="--i:10">t</span><span class="c" style="--i:11">h</span><span class="c" style="--i:12">e</span></span></span>
+            <span class="hero__line hero__line--3"><span class="w"><span class="c" style="--i:13">h</span><span class="c" style="--i:14">o</span><span class="c" style="--i:15">u</span><span class="c" style="--i:16">s</span><span class="c" style="--i:17">e</span><span class="c" style="--i:18">.</span></span></span>
+          </span>
+        </p>
 
         <div class="hero__art" data-hero-art>
           <div class="court">
@@ -191,17 +277,17 @@
         </div>
 
         <div class="hero__foot">
-          <p class="hero__lede" data-hero-fade>East Pasadena’s sports-house barbershop. Precision fades, tapers, hot towel shaves and beard work — with the game on, and without the high prices.</p>
-          <div class="hero__ctas" data-hero-fade>
+          <p class="hero__lede" data-hero-fade style="--d:.35s">East Pasadena’s sports-house barbershop. Precision fades, tapers, hot towel shaves and beard work — with the game on, and without the high prices.</p>
+          <div class="hero__ctas" data-hero-fade style="--d:.45s">
             <a class="btn btn--orange btn--lg" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book data-magnetic>
               <span>Book Now</span><svg aria-hidden="true"><use href="#i-arrow"/></svg>
-            </a>
+            <span class="visually-hidden"> (opens in new tab)</span></a>
             <a class="btn btn--ghost btn--lg" href="#menu"><span>See the playbook</span></a>
           </div>
         </div>
 
         <!-- Broadcast-style score bug -->
-        <div class="scorebug" data-hero-fade>
+        <div class="scorebug" data-hero-fade style="--d:.55s" role="group" aria-label="Shop at a glance">
           <div class="scorebug__home">
             <span class="scorebug__label">Home</span>
             <span class="scorebug__team">Halftime</span>
@@ -219,7 +305,7 @@
             <span class="scorebug__value">$45 <small>30 min</small></span>
           </a>
           <a class="scorebug__cta" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book>
-            <span><small>Next up</small>You</span><svg aria-hidden="true"><use href="#i-arrow"/></svg>
+            <span><small>Next up:</small> You<span class="visually-hidden"> — book an appointment (opens in new tab)</span></span><svg aria-hidden="true"><use href="#i-arrow"/></svg>
           </a>
         </div>
       </div>
@@ -265,12 +351,12 @@
             <p data-reveal>The goal every time is simple — you walk out sharper, and more confident, than you walked in.</p>
             <a class="link-arrow" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book data-reveal>
               <span>Book with George</span><svg aria-hidden="true"><use href="#i-arrow-right"/></svg>
-            </a>
+            <span class="visually-hidden"> (opens in new tab)</span></a>
           </div>
         </div>
 
         <div class="boxscore" data-reveal>
-          <p class="boxscore__title">Box score</p>
+          <h3 class="boxscore__title">Box score</h3>
           <dl class="stats">
             <div class="stat"><dt>Established</dt><dd><span data-count="2005" data-count-from="1990">2005</span></dd></div>
             <div class="stat"><dt>Average rating</dt><dd><span data-count="4.9" data-decimals="1">4.9</span><small>/5</small></dd></div>
@@ -299,39 +385,39 @@
             <ul class="menu__list">
               <li data-reveal>
                 <a class="svc" data-cursor="Book" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book>
-                  <span class="svc__name">Haircut</span>
+                  <span class="svc__name"><span class="visually-hidden">Book </span>Haircut</span>
                   <span class="svc__desc">Fades, tapers, scissor work — your call.</span>
                   <span class="svc__time">30 min</span>
                   <span class="svc__price">$45</span>
                   <span class="svc__go" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span>
-                </a>
+                <span class="visually-hidden"> (opens in new tab)</span></a>
               </li>
               <li data-reveal>
                 <a class="svc" data-cursor="Book" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book>
-                  <span class="svc__name">Haircut + Beard Trim</span>
+                  <span class="svc__name"><span class="visually-hidden">Book </span>Haircut + Beard Trim</span>
                   <span class="svc__desc">Your cut plus a clipper beard trim. Lineup &amp; neck shave not included.</span>
                   <span class="svc__time">1 hr</span>
                   <span class="svc__price">$65</span>
                   <span class="svc__go" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span>
-                </a>
+                <span class="visually-hidden"> (opens in new tab)</span></a>
               </li>
               <li data-reveal>
                 <a class="svc" data-cursor="Book" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book>
-                  <span class="svc__name">Haircut + Full Beard</span>
+                  <span class="svc__name"><span class="visually-hidden">Book </span>Haircut + Full Beard</span>
                   <span class="svc__desc">Your cut plus the full beard service — trim, shape, lineup &amp; neck shave.</span>
                   <span class="svc__time">1 hr</span>
                   <span class="svc__price">$80</span>
                   <span class="svc__go" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span>
-                </a>
+                <span class="visually-hidden"> (opens in new tab)</span></a>
               </li>
               <li data-reveal>
                 <a class="svc" data-cursor="Book" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book>
-                  <span class="svc__name">Haircut + Hot Towel Shave</span>
+                  <span class="svc__name"><span class="visually-hidden">Book </span>Haircut + Hot Towel Shave</span>
                   <span class="svc__desc">The full reset: a fresh cut finished with a hot towel shave.</span>
                   <span class="svc__time">1 hr</span>
                   <span class="svc__price">$80</span>
                   <span class="svc__go" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span>
-                </a>
+                <span class="visually-hidden"> (opens in new tab)</span></a>
               </li>
             </ul>
           </div>
@@ -341,29 +427,29 @@
             <ul class="menu__list">
               <li data-reveal>
                 <a class="svc" data-cursor="Book" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book>
-                  <span class="svc__name">Beard Trim</span>
+                  <span class="svc__name"><span class="visually-hidden">Book </span>Beard Trim</span>
                   <span class="svc__desc">A clean clipper trim. Lineup &amp; neck not included.</span>
                   <span class="svc__time">30 min</span>
                   <span class="svc__price">$25</span>
                   <span class="svc__go" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span>
-                </a>
+                <span class="visually-hidden"> (opens in new tab)</span></a>
               </li>
               <li data-reveal>
                 <a class="svc" data-cursor="Book" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book>
-                  <span class="svc__name">Full Beard Service</span>
+                  <span class="svc__name"><span class="visually-hidden">Book </span>Full Beard Service</span>
                   <span class="svc__desc">Trim, shape, lineup and neck shave.</span>
                   <span class="svc__price">$40</span>
                   <span class="svc__go" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span>
-                </a>
+                <span class="visually-hidden"> (opens in new tab)</span></a>
               </li>
               <li data-reveal>
                 <a class="svc" data-cursor="Book" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book>
-                  <span class="svc__name">Hot Towel Shave</span>
+                  <span class="svc__name"><span class="visually-hidden">Book </span>Hot Towel Shave</span>
                   <span class="svc__desc">Hot towels, warm lather and a close, old-school finish.</span>
                   <span class="svc__time">30 min</span>
                   <span class="svc__price">$50</span>
                   <span class="svc__go" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span>
-                </a>
+                <span class="visually-hidden"> (opens in new tab)</span></a>
               </li>
             </ul>
             <p class="menu__note" data-reveal>Kids cuts, head shaves and neck cleanups are available too — see current pricing and open times when you book.</p>
@@ -373,7 +459,7 @@
         <div class="menu__cta" data-reveal>
           <a class="btn btn--orange btn--lg" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book data-magnetic>
             <span>Book your chair</span><svg aria-hidden="true"><use href="#i-arrow"/></svg>
-          </a>
+          <span class="visually-hidden"> (opens in new tab)</span></a>
           <p>Secure online booking powered by Square.</p>
         </div>
       </div>
@@ -404,7 +490,7 @@
                 <p class="player__role">Owner · Barber</p>
                 <h3 class="player__name">George</h3>
                 <p class="player__bio">Years in Burbank and the Valley before taking over Halftime. Regulars have stuck with him for years — the conversation’s half the reason.</p>
-                <a class="link-arrow" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book><span>Book with George</span><svg aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+                <a class="link-arrow" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book><span>Book with George</span><svg aria-hidden="true"><use href="#i-arrow-right"/></svg><span class="visually-hidden"> (opens in new tab)</span></a>
               </div>
             </article>
 
@@ -420,7 +506,7 @@
                 <p class="player__role">Barber</p>
                 <h3 class="player__name">Josh</h3>
                 <p class="player__bio">Precision fades and tapers. Skill, professionalism and a great personality — clients call him a hair artist.</p>
-                <a class="link-arrow" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book><span>Book with Josh</span><svg aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+                <a class="link-arrow" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book><span>Book with Josh</span><svg aria-hidden="true"><use href="#i-arrow-right"/></svg><span class="visually-hidden"> (opens in new tab)</span></a>
               </div>
             </article>
 
@@ -436,7 +522,7 @@
                 <p class="player__role">Barber</p>
                 <h3 class="player__name">Robert</h3>
                 <p class="player__bio">Clean, consistent, reliable. One visit and clients are already planning to stick with Robert for the long haul.</p>
-                <a class="link-arrow" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book><span>Book with Robert</span><svg aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+                <a class="link-arrow" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book><span>Book with Robert</span><svg aria-hidden="true"><use href="#i-arrow-right"/></svg><span class="visually-hidden"> (opens in new tab)</span></a>
               </div>
             </article>
 
@@ -452,7 +538,7 @@
                 <p class="player__role">Barber · Stylist</p>
                 <h3 class="player__name">Stef</h3>
                 <p class="player__bio">Detail-obsessed with serious technique — and great at making kids feel comfortable in the chair.</p>
-                <a class="link-arrow" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book><span>Book with Stef</span><svg aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+                <a class="link-arrow" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book><span>Book with Stef</span><svg aria-hidden="true"><use href="#i-arrow-right"/></svg><span class="visually-hidden"> (opens in new tab)</span></a>
               </div>
             </article>
           </div>
@@ -504,8 +590,8 @@
               <span class="stars stars--lg" role="img" aria-label="Rated 4.9 out of 5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
               <p class="score__meta">Average across 370+ client reviews</p>
               <p class="score__links">
-                <a href="https://www.google.com/maps/search/?api=1&amp;query=Halftime+Cuts+3205+E+Foothill+Blvd+Pasadena+CA+91107" target="_blank" rel="noopener">Read on Google<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-                <a href="https://www.yelp.com/biz/halftime-cuts-pasadena" target="_blank" rel="noopener">Yelp<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                <a href="https://www.google.com/maps/search/?api=1&amp;query=Halftime+Cuts+3205+E+Foothill+Blvd+Pasadena+CA+91107" target="_blank" rel="noopener">Read on Google<svg aria-hidden="true"><use href="#i-arrow"/></svg><span class="visually-hidden"> (opens in new tab)</span></a>
+                <a href="https://www.yelp.com/biz/halftime-cuts-pasadena" target="_blank" rel="noopener">Yelp<svg aria-hidden="true"><use href="#i-arrow"/></svg><span class="visually-hidden"> (opens in new tab)</span></a>
               </p>
             </div>
           </div>
@@ -523,7 +609,7 @@
         </figure>
       </div>
 
-      <div class="reviews__marquee" data-reviews-marquee>
+      <div class="reviews__marquee" data-reviews-marquee role="region" aria-label="More client reviews" tabindex="0">
         <ul class="reviews__track">
           <li class="review-card">
             <span class="stars" role="img" aria-label="5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
@@ -554,40 +640,40 @@
       <div class="wrap gram__head">
         <p class="kicker" data-reveal><span>06</span>Highlight Reel</p>
         <h2 class="gram__title" id="gram-title">
-          <a href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener"><span data-split="chars">@halftimecuts</span></a>
+          <a href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener"><span data-split="chars">@halftimecuts</span><span class="visually-hidden"> (opens in new tab)</span></a>
         </h2>
         <div class="gram__row">
           <p class="section-intro" data-reveal>Fresh off the chair. Fades, tapers and beard work — straight from the shop floor.</p>
           <div data-reveal>
             <a class="btn btn--blue btn--lg" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" data-magnetic>
               <svg aria-hidden="true"><use href="#i-instagram"/></svg><span>Follow us</span>
-            </a>
+            <span class="visually-hidden"> (opens in new tab)</span></a>
           </div>
         </div>
       </div>
 
       <div class="gram__grid">
-        <a data-cursor="View" class="tile tile--ice" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" data-speed="-6" aria-label="Fades on Instagram">
+        <a data-cursor="View" class="tile tile--ice" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" data-speed="-6" aria-label="Fades on Instagram (opens in new tab)">
           <span class="tile__fallback"><em>Fades.</em></span>
           <img src="assets/img/ig-1.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()">
         </a>
-        <a data-cursor="View" class="tile tile--orange" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" data-speed="8" aria-label="Tapers on Instagram">
+        <a data-cursor="View" class="tile tile--orange" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" data-speed="8" aria-label="Tapers on Instagram (opens in new tab)">
           <span class="tile__fallback"><em>Tapers.</em></span>
           <img src="assets/img/ig-2.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()">
         </a>
-        <a data-cursor="View" class="tile tile--pole" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" data-speed="-10" aria-label="Halftime Cuts on Instagram">
+        <a data-cursor="View" class="tile tile--pole" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" data-speed="-10" aria-label="Halftime Cuts on Instagram (opens in new tab)">
           <span class="tile__fallback tile__fallback--logo"><img src="assets/img/logo.svg" alt="" width="616" height="482" loading="lazy"></span>
           <img src="assets/img/ig-3.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()">
         </a>
-        <a data-cursor="View" class="tile tile--blue" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" data-speed="4" aria-label="Beard work on Instagram">
+        <a data-cursor="View" class="tile tile--blue" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" data-speed="4" aria-label="Beards on Instagram (opens in new tab)">
           <span class="tile__fallback"><em>Beards.</em></span>
           <img src="assets/img/ig-4.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()">
         </a>
-        <a data-cursor="View" class="tile tile--navy" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" data-speed="-4" aria-label="Hot towel shaves on Instagram">
+        <a data-cursor="View" class="tile tile--navy" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" data-speed="-4" aria-label="Hot towel shaves on Instagram (opens in new tab)">
           <span class="tile__fallback"><em>Hot towel.</em></span>
           <img src="assets/img/ig-5.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()">
         </a>
-        <a data-cursor="View" class="tile tile--white" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" data-speed="10" aria-label="Lineups on Instagram">
+        <a data-cursor="View" class="tile tile--white" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" data-speed="10" aria-label="Lineups on Instagram (opens in new tab)">
           <span class="tile__fallback"><em>Lineups.</em></span>
           <img src="assets/img/ig-6.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()">
         </a>
@@ -604,8 +690,10 @@
           <address class="visit__address" data-reveal>
             <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Halftime+Cuts+3205+E+Foothill+Blvd+Pasadena+CA+91107" target="_blank" rel="noopener">
               3205 E Foothill Blvd<br>Pasadena, CA 91107
-            </a>
+            <span class="visually-hidden"> (opens in new tab)</span></a>
           </address>
+
+          <p class="visit__local" data-reveal>East Pasadena, on Foothill Blvd near the 210 — minutes from Sierra Madre, Arcadia and Altadena.</p>
 
           <p class="status" data-status data-reveal><span class="status__dot" aria-hidden="true"></span><span class="status__text">Open Tuesday–Saturday, 9am–6pm</span></p>
 
@@ -630,10 +718,10 @@
           <div class="visit__ctas" data-reveal>
             <a class="btn btn--orange btn--lg" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book data-magnetic>
               <span>Book Now</span><svg aria-hidden="true"><use href="#i-arrow"/></svg>
-            </a>
+            <span class="visually-hidden"> (opens in new tab)</span></a>
             <a class="btn btn--ghost btn--lg" href="https://www.google.com/maps/dir/?api=1&amp;destination=Halftime+Cuts+3205+E+Foothill+Blvd+Pasadena+CA+91107" target="_blank" rel="noopener">
               <svg aria-hidden="true"><use href="#i-pin"/></svg><span>Directions</span>
-            </a>
+            <span class="visually-hidden"> (opens in new tab)</span></a>
           </div>
         </div>
 
@@ -642,10 +730,47 @@
             <a class="map-fallback" href="https://www.google.com/maps/search/?api=1&amp;query=Halftime+Cuts+3205+E+Foothill+Blvd+Pasadena+CA+91107" target="_blank" rel="noopener">
               <img src="assets/img/logo.svg" alt="" width="616" height="482" loading="lazy">
               <span>Open in Google Maps</span>
-            </a>
+            <span class="visually-hidden"> (opens in new tab)</span></a>
             <iframe title="Map showing Halftime Cuts at 3205 E Foothill Blvd, Pasadena" src="https://www.google.com/maps?q=Halftime+Cuts,+3205+E+Foothill+Blvd,+Pasadena,+CA+91107&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
-          <p class="visit__map-note">East Pasadena, on Foothill Blvd near the 210.</p>
+          <p class="visit__map-note">Tap the map for directions, or call <a href="tel:+16267964253">(626) 796-4253</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="faq section" id="faq" aria-labelledby="faq-title">
+      <div class="wrap faq__grid">
+        <div class="faq__head">
+          <p class="kicker" data-reveal><span>08</span>FAQ</p>
+          <h2 class="h2" id="faq-title" data-split="words">Good to <em>know.</em></h2>
+          <p class="section-intro" data-reveal>Quick answers before you pull up. Anything else? Call <a href="tel:+16267964253">(626) 796-4253</a>.</p>
+        </div>
+        <div class="faq__list">
+          <details class="faq__item" data-reveal>
+            <summary><span class="faq__n" aria-hidden="true">01</span><span class="faq__q">How do I book an appointment at Halftime Cuts?</span><span class="faq__icon" aria-hidden="true"></span></summary>
+            <div class="faq__a"><p>Book online any time through our Square booking page — pick your barber, your service and a time that works. Prefer to talk to someone? Call us at (626) 796-4253.</p></div>
+          </details>
+          <details class="faq__item" data-reveal>
+            <summary><span class="faq__n" aria-hidden="true">02</span><span class="faq__q">How much is a haircut?</span><span class="faq__icon" aria-hidden="true"></span></summary>
+            <div class="faq__a"><p>A haircut is $45 and takes about 30 minutes. A haircut with a beard trim is $65, and a haircut with the full beard service or a hot towel shave is $80.</p></div>
+          </details>
+          <details class="faq__item" data-reveal>
+            <summary><span class="faq__n" aria-hidden="true">03</span><span class="faq__q">Do you cut kids’ hair?</span><span class="faq__icon" aria-hidden="true"></span></summary>
+            <div class="faq__a"><p>Yes. Kids cuts are available — you’ll see current pricing and open times when you book. Stef is a favorite with younger clients.</p></div>
+          </details>
+          <details class="faq__item" data-reveal>
+            <summary><span class="faq__n" aria-hidden="true">04</span><span class="faq__q">What are your hours?</span><span class="faq__icon" aria-hidden="true"></span></summary>
+            <div class="faq__a"><p>We’re open Tuesday through Saturday, 9am to 6pm, and closed on Sunday and Monday.</p></div>
+          </details>
+          <details class="faq__item" data-reveal>
+            <summary><span class="faq__n" aria-hidden="true">05</span><span class="faq__q">Where is Halftime Cuts located?</span><span class="faq__icon" aria-hidden="true"></span></summary>
+            <div class="faq__a"><p>We’re at 3205 E Foothill Blvd, Pasadena, CA 91107 — in East Pasadena near the 210, a few minutes from Sierra Madre, Arcadia and Altadena.</p></div>
+          </details>
+          <details class="faq__item" data-reveal>
+            <summary><span class="faq__n" aria-hidden="true">06</span><span class="faq__q">Do you offer beard trims and hot towel shaves?</span><span class="faq__icon" aria-hidden="true"></span></summary>
+            <div class="faq__a"><p>Yes. We do beard trims ($25), a full beard service with shape, lineup and neck shave ($40), and classic hot towel shaves ($50).</p></div>
+          </details>
         </div>
       </div>
     </section>
@@ -667,7 +792,7 @@
           <h2 class="cta__title" id="cta-title"><span data-split="chars">You’re up</span> <em data-split="chars">next.</em></h2>
           <a class="btn btn--orange btn--xl" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book data-magnetic>
             <span>Book Now</span><svg aria-hidden="true"><use href="#i-arrow"/></svg>
-          </a>
+          <span class="visually-hidden"> (opens in new tab)</span></a>
           <a class="cta__phone" href="tel:+16267964253">or call (626) 796-4253</a>
         </div>
       </div>
@@ -675,6 +800,7 @@
   </main>
 
   <footer class="footer">
+    <h2 class="visually-hidden">Halftime Cuts — contact, hours and links</h2>
     <div class="wrap footer__grid">
       <div class="footer__brand">
         <a class="brand brand--lg" href="#top" aria-label="Halftime Cuts — back to top">
@@ -697,9 +823,9 @@
       <div class="footer__col">
         <h3>Follow</h3>
         <p class="footer__social">
-          <a href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" aria-label="Instagram"><svg aria-hidden="true"><use href="#i-instagram"/></svg></a>
-          <a href="https://www.facebook.com/HalftimeCuts/" target="_blank" rel="noopener" aria-label="Facebook"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a>
-          <a class="footer__yelp" href="https://www.yelp.com/biz/halftime-cuts-pasadena" target="_blank" rel="noopener">Yelp</a>
+          <a href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" aria-label="Instagram (opens in new tab)"><svg aria-hidden="true"><use href="#i-instagram"/></svg></a>
+          <a href="https://www.facebook.com/HalftimeCuts/" target="_blank" rel="noopener" aria-label="Facebook (opens in new tab)"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a>
+          <a class="footer__yelp" href="https://www.yelp.com/biz/halftime-cuts-pasadena" target="_blank" rel="noopener">Yelp<span class="visually-hidden"> (opens in new tab)</span></a>
         </p>
       </div>
     </div>
@@ -708,18 +834,20 @@
 
     <div class="wrap footer__legal">
       <p>© <span data-year>2026</span> Halftime Cuts · Pasadena, CA</p>
-      <a href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book>Book online</a>
-      <a href="#top">Back to top ↑</a>
+      <a href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book>Book online<span class="visually-hidden"> (opens in new tab)</span></a>
+      <a href="accessibility.html">Accessibility</a>
+      <button class="text-btn" type="button" aria-pressed="false" data-motion-toggle><span class="text-btn__icon" aria-hidden="true"></span>Pause animations</button>
+      <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
     </div>
   </footer>
 
   <!-- Mobile: booking is always one thumb away. -->
-  <div class="book-bar" data-book-bar>
+  <aside class="book-bar" data-book-bar aria-label="Quick booking">
     <a class="book-bar__call" href="tel:+16267964253" aria-label="Call Halftime Cuts"><svg aria-hidden="true"><use href="#i-phone"/></svg></a>
     <a class="btn btn--orange book-bar__btn" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book>
       <span>Book Now</span><svg aria-hidden="true"><use href="#i-arrow"/></svg>
-    </a>
-  </div>
+    <span class="visually-hidden"> (opens in new tab)</span></a>
+  </aside>
 
   <div class="cursor" aria-hidden="true"><span class="cursor__label">Book<svg><use href="#i-arrow"/></svg></span></div>
 

@@ -25,13 +25,14 @@ Point `halftimecuts.com` at the host once it's live.
 
 | What | Where | Why |
 | --- | --- | --- |
-| **Square booking link** | Every `data-book` link in `index.html` (search `s/appointments`) | Right now these go to `https://www.halftimecuts.com/s/appointments`, which is the current Square Online site. **That page goes away when this site replaces it on the same domain.** In the Square Dashboard → Appointments → Online booking, copy the direct booking-site link (it looks like `https://book.squareup.com/appointments/…`) and find-and-replace it across `index.html`. Also update the `ReserveAction` target in the JSON-LD. |
+| **Square booking link** | Search `s/appointments` in `index.html` and `accessibility.html` | Right now these go to `https://www.halftimecuts.com/s/appointments`, which is the current Square Online site. **That page goes away when this site replaces it on the same domain.** In the Square Dashboard → Appointments → Online booking, copy the direct booking-site link (it looks like `https://book.squareup.com/appointments/…`) and find-and-replace it in both files. The search also catches the `ReserveAction` target in the structured data. |
 | Instagram handle | Search `instagram.com/halftimecuts` | `@halftimecuts` matches the shop's Facebook and X handles but couldn't be verified directly. |
-| Hours | `.hours` table, footer, score bar, CTA copy, `HOURS` in `assets/js/main.js`, JSON-LD | The current site says **Tue–Sat 9am–6pm** (closed Sun & Mon). Some directories still list Mon–Sat. |
+| Hours | `.hours` table, footer, score bar, CTA copy, FAQ, `HOURS` in `assets/js/main.js`, JSON-LD | The current site says **Tue–Sat 9am–6pm** (closed Sun & Mon). Some directories still list Mon–Sat. |
 | Rating & review count | Score bar, box score, reviews header (search `4.9` and `370`) | Taken from public review aggregators. Match them to the Google Business Profile. |
 | Reviews | `#reviews` section | The quotes come from public review snippets. Swap in exact Google reviews (first name + last initial). Each card is a simple `<li class="review-card">`. |
 | Barber lineup | `#lineup` section | George (owner), Josh, Robert and Stef come up most in recent reviews. Older listings also mention Lamar, Wilson and Cameron, so confirm who's currently behind the chair. |
 | Phone | Search `796-4253` | `(626) 796-4253` is what the current site lists. One directory shows `(626) 514-3143`. |
+| Walk-ins / parking | `#faq` section + FAQ in the JSON-LD | Not published anywhere I could find, so the FAQ doesn't mention them. If they take walk-ins or have parking, add a question. These are common local searches. |
 
 ## Adding photos
 
@@ -51,16 +52,82 @@ Compress images before uploading (for example with [Squoosh](https://squoosh.app
 
 ```
 index.html              All content and markup
+accessibility.html      Accessibility statement (linked in the footer)
+404.html                Branded "page not found"
+site.webmanifest        App name, colors and icons
 assets/css/styles.css   Design tokens (brand colors, type, spacing) at the top, then sections in page order
-assets/js/main.js       Open/closed status, mobile menu, booking bar, and all scroll animation
+assets/js/main.js       Open/closed status, menu, booking bar, pause control, focus handling, scroll animation
 assets/vendor/          GSAP 3.15 + ScrollTrigger, Lenis 1.3 (vendored, no CDN)
-assets/fonts/           Archivo, upright + italic (variable width + weight), self-hosted (OFL)
+assets/fonts/           Archivo upright + italic, self-hosted (OFL), trimmed to Latin and the weights/widths in use
 assets/img/             Logo (SVG + original PNG), favicons, social share image, and your photos
 ```
 
+## SEO
+
+What's built in:
+
+- **Title, description and one H1:** each targets "barbershop in Pasadena" plus services. There's a canonical URL, Open Graph and Twitter cards with a 1200×630 share image, and a web app manifest with icons.
+- **Structured data (JSON-LD):**
+  - `HairSalon`: name, address, phone, hours, map, area served, social profiles, booking action, and a service catalog with prices.
+  - `WebSite`.
+  - `FAQPage`.
+- **Local content:** service names, neighborhoods (East Pasadena, Sierra Madre, Arcadia, Altadena) and a visible FAQ that answers real search questions.
+- **Crawling:** `robots.txt` and `sitemap.xml`, plus a branded `404.html`. The github.io preview adds a `noindex` tag at runtime, so only the real domain ranks.
+- **Core Web Vitals:**
+  - The first-paint animation is pure CSS, so the hero renders without waiting on JavaScript.
+  - Fonts are self-hosted and trimmed to the characters the site uses.
+  - Lighthouse (with compression, like GitHub Pages): mobile 94 performance and 100 SEO; desktop 99 and 100.
+
+**After launch (most of local SEO happens off the site):**
+
+1. **Google Business Profile:**
+   - Set the website to `https://www.halftimecuts.com/`.
+   - Use "Barber shop" as the primary category.
+   - Make the hours match the site.
+   - Add photos, post occasionally, and reply to reviews.
+2. **Google Search Console:** verify the domain and submit `https://www.halftimecuts.com/sitemap.xml`. Do the same in Bing Webmaster Tools.
+3. **Consistent name, address and phone everywhere:** fix the conflicting phone number and hours on Yelp, Facebook, Apple Maps (Apple Business Connect), Nextdoor and directories so they match the site exactly.
+4. **Keep asking happy clients for Google reviews.** Volume and recency both help.
+5. **When you edit the FAQ, services or hours:** update the matching JSON-LD in `<head>` too, so search engines see the same facts.
+
+## Accessibility (ADA / WCAG 2.2 AA)
+
+The site targets **WCAG 2.2 Level AA**, the standard ADA website cases are measured against. It was tested with axe-core (0 violations at 320–1920px, with and without reduced motion), Lighthouse Accessibility 100, a scripted keyboard pass of every tab stop, 400% zoom (320px) and the WCAG text-spacing test.
+
+What's in place:
+
+- **Navigation and keyboard:**
+  - Skip link and landmarks, with a single logical heading outline.
+  - Every control is reachable by keyboard, with a visible focus ring that's never hidden under the sticky header or booking bar.
+  - In-page links move keyboard focus.
+  - The mobile menu blocks everything behind it while open, closes with Esc, and returns focus.
+  - In the pinned barber section, tabbing scrolls to the barber card being focused.
+- **Contrast and visibility:**
+  - Text and controls pass AA contrast.
+  - Content that fades in on scroll appears instantly when it receives focus, or when you arrive by link or find-in-page.
+  - Windows High Contrast mode is supported.
+- **Motion:**
+  - `prefers-reduced-motion` is honored.
+  - A **Pause animations** button (header, mobile menu, footer) stops every looping animation and remembers the choice.
+- **Screen readers:**
+  - Animated headings are announced as normal text, and counters announce their final number.
+  - Links that open a new tab say so.
+  - The "Today" marker in the hours is real text.
+- **Touch and layout:** tap targets are at least 24×24px, and grids and headings reflow down to 320px without cutting off content.
+- **Accessibility statement:** [`accessibility.html`](accessibility.html) is linked in the footer and includes a phone and email contact for anyone who has trouble.
+
+Keeping it compliant as the site changes:
+
+- Give every new photo a short, specific `alt` (for example, "Skin fade with a hard part by Josh"). Use `alt=""` only for decorative images.
+- Stick to the color tokens in `styles.css`. Orange text on white is only allowed at large sizes.
+- Caption any video you add, and don't add autoplaying sound.
+- Re-test after big changes. Run [axe DevTools](https://www.deque.com/axe/devtools/) or Lighthouse in Chrome, and try the page with only a keyboard.
+- Update the review date in `accessibility.html` once a year.
+
+No website can promise legal immunity. The parts outside our control are Square booking, Google Maps and the social sites. The statement page covers this by offering phone booking.
+
 ## Notes
 
-- **Accessibility:** semantic landmarks, skip link, visible focus states, and screen-reader text for animated headings. The page also respects `prefers-reduced-motion`, which turns off all animation and leaves a clean static page.
 - **Without JavaScript:** everything is still visible and every link works.
 - **Live status:** the score bar's LIVE/Closed tag, the "Open now / Closed" pill and the highlighted row in the hours table all use Pasadena time (`America/Los_Angeles`).
 - **Map:** the Google Maps embed needs no API key. If it's blocked, an "Open in Google Maps" link shows in its place.

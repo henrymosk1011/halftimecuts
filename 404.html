@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" class="js">
+<head>
+  <meta charset="utf-8">
+  <script>
+    // 404s can be served at any depth, so pin relative links to the site root
+    // (the project subfolder on a github.io preview, "/" on the real domain).
+    document.write('<base href="' + (/\.github\.io$/i.test(location.hostname) ? '/' + location.pathname.split('/')[1] + '/' : '/') + '">');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Page not found | Halftime Cuts, Pasadena</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#FFFFFF">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <main id="main" tabindex="-1" class="doc doc--center">
+    <div class="wrap doc__wrap">
+      <p class="kicker"><span>404</span>Out of bounds</p>
+      <h1 class="h2">Flag on <em>the play.</em></h1>
+      <p class="doc__lede">That page doesn’t exist. Let’s get you back in the game.</p>
+      <p class="doc__actions">
+        <a class="btn btn--orange btn--lg" href="./"><span>Go to the home page</span></a>
+        <a class="btn btn--ghost btn--lg" href="tel:+16267964253"><span>Call (626) 796-4253</span></a>
+      </p>
+    </div>
+  </main>
+</body>
+</html>

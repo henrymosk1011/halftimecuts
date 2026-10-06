@@ -1,0 +1,14 @@
+{
+  "name": "Halftime Cuts — Barbershop in Pasadena, CA",
+  "short_name": "Halftime Cuts",
+  "description": "East Pasadena’s sports barbershop since 2005. Fades, tapers, kids cuts, beard trims and hot towel shaves.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "browser",
+  "background_color": "#FFFFFF",
+  "theme_color": "#223D79",
+  "icons": [
+    { "src": "assets/img/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/img/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
