@@ -73,6 +73,17 @@
     }
     el.classList.add(isOpen ? 'is-open' : 'is-closed');
     $('.status__text', el).textContent = text;
+
+    // Broadcast score bug in the hero
+    var live = $('[data-live]');
+    var short = $('[data-status-short]');
+    if (live && short) {
+      live.textContent = isOpen ? 'Live' : 'Closed';
+      live.classList.toggle('is-live', isOpen);
+      short.textContent = text.replace(/^(Open|Closed) now · /, function (m, word) {
+        return word === 'Open' ? 'Open · ' : '';
+      });
+    }
   }
 
   function headerState() {
@@ -337,15 +348,10 @@
   function heroIn(withHeader) {
     var tl = gsap.timeline();
     if (withHeader) tl.fromTo('.header', { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 0.9 }, 0.1);
-    tl.to(heroChars, { yPercent: 0, duration: 1.25, ease: 'expo.out', stagger: 0.04 }, 0)
-      .fromTo('.arch__window',
-        { clipPath: 'inset(100% 0% 0% 0%)' },
-        { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.4, ease: 'expo.inOut' }, 0)
-      .fromTo('.arch', { scale: 1.06 }, { scale: 1, duration: 1.8, ease: 'expo.out' }, 0.2)
-      .fromTo('.badge',
-        { opacity: 0, scale: 0.4, rotate: -120 },
-        { opacity: 1, scale: 1, rotate: 0, duration: 1.2, ease: 'back.out(1.5)' }, 0.75)
-      .to('[data-hero-fade]', { opacity: 1, y: 0, duration: 1, stagger: 0.08 }, 0.45);
+    tl.to(heroChars, { yPercent: 0, duration: 1.25, ease: 'expo.out', stagger: 0.035 }, 0)
+      .fromTo('.court', { opacity: 0, scale: 0.82, rotate: -25 }, { opacity: 1, scale: 1, rotate: 0, duration: 1.5, ease: 'expo.out' }, 0.05)
+      .fromTo('.court__logo', { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.3, ease: 'back.out(1.6)' }, 0.45)
+      .to('[data-hero-fade]', { opacity: 1, y: 0, duration: 1, stagger: 0.08 }, 0.4);
     return tl;
   }
 
@@ -372,8 +378,9 @@
         onUpdate: function () { clock.textContent = String(Math.round(count.v)).padStart(2, '0'); }
       })
       .to('.preloader__progress span', { scaleX: 1, duration: 1.15, ease: 'power2.inOut' }, 0)
-      .to('.preloader__kicker, .preloader__clock', { yPercent: -60, opacity: 0, duration: 0.45, ease: 'power3.in' }, '+=0.05')
-      .fromTo('.preloader__word', { yPercent: 70, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.55, ease: 'power3.out' }, '-=0.15')
+      .fromTo('.preloader__logo', { scale: 0.6, opacity: 0, rotate: -8 }, { scale: 1, opacity: 1, rotate: 0, duration: 0.9, ease: 'back.out(1.7)' }, 0)
+      .to('.preloader__board', { yPercent: -40, opacity: 0, duration: 0.4, ease: 'power3.in' }, '+=0.05')
+      .fromTo('.preloader__word', { yPercent: 60, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.5, ease: 'back.out(2)' }, '-=0.1')
       .to(pre, { yPercent: -100, duration: 1, ease: 'expo.inOut' }, '+=0.2')
       .addLabel('lift', '<')
       .add(heroIn(true), 'lift+=0.45')
@@ -389,8 +396,8 @@
     yPercent: 12, ease: 'none',
     scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
   });
-  gsap.to('.badge__mark', {
-    rotate: 360, ease: 'none',
+  gsap.to('.court__lines', {
+    rotate: 120, ease: 'none',
     scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.6 }
   });
 
@@ -614,8 +621,22 @@
     fitAll();
   }
 
-  /* Magnetic buttons + cursor label (mouse/trackpad only) ------------------ */
+  /* Magnetic buttons, logo tilt + cursor label (mouse/trackpad only) ----- */
   if (finePointer) {
+    var tilt = $('[data-tilt]');
+    var hero = $('.hero');
+    if (tilt && hero) {
+      gsap.set(tilt, { transformPerspective: 900 });
+      var rx = gsap.quickTo(tilt, 'rotationX', { duration: 0.9, ease: 'power3' });
+      var ry = gsap.quickTo(tilt, 'rotationY', { duration: 0.9, ease: 'power3' });
+      hero.addEventListener('pointermove', function (e) {
+        var r = hero.getBoundingClientRect();
+        ry(((e.clientX - r.left) / r.width - 0.5) * 22);
+        rx(-((e.clientY - r.top) / r.height - 0.5) * 16);
+      });
+      hero.addEventListener('pointerleave', function () { rx(0); ry(0); });
+    }
+
     $$('[data-magnetic]').forEach(function (btn) {
       var xTo = gsap.quickTo(btn, 'x', { duration: 0.8, ease: 'elastic.out(1, 0.4)' });
       var yTo = gsap.quickTo(btn, 'y', { duration: 0.8, ease: 'elastic.out(1, 0.4)' });

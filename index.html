@@ -3,22 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Halftime Cuts — Barbershop in Pasadena, CA</title>
-  <meta name="description" content="Halftime Cuts is East Pasadena’s sports-house barbershop since 2005. Precision fades, tapers, hot towel shaves and beard work on Foothill Blvd. Book online.">
-  <meta name="theme-color" content="#F2EDE4">
+  <title>Halftime Cuts — Sports Barbershop in Pasadena, CA</title>
+  <meta name="description" content="Halftime Cuts is East Pasadena’s sports barbershop since 2005. Precision fades, tapers, hot towel shaves and beard work on Foothill Blvd — with the game on. Book online.">
+  <meta name="theme-color" content="#FFFFFF">
   <link rel="canonical" href="https://www.halftimecuts.com/">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Halftime Cuts">
-  <meta property="og:title" content="Halftime Cuts — Barbershop in Pasadena, CA">
-  <meta property="og:description" content="Sharp cuts. Hot towels. The game’s on. East Pasadena’s sports-house barbershop since 2005.">
+  <meta property="og:title" content="Halftime Cuts — Sports Barbershop in Pasadena, CA">
+  <meta property="og:description" content="The best seat in the house. Fades, tapers, hot towel shaves and beard work — with the game on. East Pasadena since 2005.">
   <meta property="og:url" content="https://www.halftimecuts.com/">
   <meta property="og:image" content="https://www.halftimecuts.com/assets/img/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/archivo-latin-wdth-italic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/instrument-serif-latin-400-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/img/logo.svg" as="image" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/styles.css">
 
   <script>
@@ -44,9 +47,10 @@
     "name": "Halftime Cuts",
     "description": "Sports-themed barbershop in East Pasadena since 2005. Haircuts, fades, beard trims and hot towel shaves.",
     "url": "https://www.halftimecuts.com/",
+    "logo": "https://www.halftimecuts.com/assets/img/logo-original.png",
+    "image": "https://www.halftimecuts.com/assets/img/og-image.png",
     "telephone": "+1-626-796-4253",
     "email": "halftimecuts@icloud.com",
-    "image": "https://www.halftimecuts.com/assets/img/og-image.png",
     "priceRange": "$$",
     "foundingDate": "2005",
     "address": {
@@ -79,40 +83,28 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Icon + logo sprite. Kept rendered (not display:none) so the stripe pattern paints in every browser. -->
   <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <pattern id="pole-pattern" width="24" height="24" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-        <rect width="24" height="24" fill="#F2EDE4"/>
-        <rect width="6" height="24" fill="#B3202C"/>
-        <rect x="12" width="6" height="24" fill="#1C2B4A"/>
-      </pattern>
-      <clipPath id="mark-disc"><circle cx="50" cy="50" r="44"/></clipPath>
-      <symbol id="i-mark" viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="44" fill="#F2EDE4"/>
-        <rect width="50" height="100" fill="url(#pole-pattern)" clip-path="url(#mark-disc)"/>
-        <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="7"/>
-        <path d="M50 6v88" stroke="currentColor" stroke-width="7"/>
-        <circle cx="50" cy="50" r="9" fill="currentColor"/>
-      </symbol>
-    </defs>
-    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M8.5 7H17v8.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-    <symbol id="i-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/></g><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M8.5 7H17v8.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/></g><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor"/></symbol>
     <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.9v3h2.6V21h3Z" fill="currentColor"/></symbol>
-    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.6 3.5h2.6l1.4 4.1-1.9 1.3a12 12 0 0 0 6.4 6.4l1.3-1.9 4.1 1.4v2.6a2 2 0 0 1-2.1 2A16.6 16.6 0 0 1 4.6 5.6a2 2 0 0 1 2-2.1Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.6 3.5h2.6l1.4 4.1-1.9 1.3a12 12 0 0 0 6.4 6.4l1.3-1.9 4.1 1.4v2.6a2 2 0 0 1-2.1 2A16.6 16.6 0 0 1 4.6 5.6a2 2 0 0 1 2-2.1Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
     <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2.6 2.9 6 6.5.8-4.8 4.5 1.2 6.5L12 17.2l-5.8 3.2 1.2-6.5-4.8-4.5 6.5-.8L12 2.6Z" fill="currentColor"/></symbol>
-    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.4"/></g></symbol>
-    <symbol id="i-tv" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10" width="38" height="25" rx="3"/><path d="M17 42h14M24 35v7M17 4l7 6 7-6"/><path d="M15 27c2.5-6 6.5-9 13-9m-3-3 3 3-3 3"/></g></symbol>
-    <symbol id="i-towel" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4c-3 3 3 5 0 8s3 5 0 8M24 4c-3 3 3 5 0 8s3 5 0 8M32 4c-3 3 3 5 0 8s3 5 0 8"/><rect x="7" y="26" width="34" height="16" rx="8"/><path d="M14 34h20"/></g></symbol>
-    <symbol id="i-tag" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 26 26 6h15v15L21 41a3 3 0 0 1-4.2 0L6 30.2a3 3 0 0 1 0-4.2Z"/><circle cx="33" cy="14" r="3"/><path d="m17 24 7 7M21 20l7 7"/></g></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.4"/></g></symbol>
+    <symbol id="i-tv" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10" width="38" height="25" rx="3"/><path d="M17 42h14M24 35v7M17 4l7 6 7-6"/><circle cx="24" cy="22.5" r="6"/><path d="M18 22.5h12M24 16.5v12"/></g></symbol>
+    <symbol id="i-towel" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4c-3 3 3 5 0 8s3 5 0 8M24 4c-3 3 3 5 0 8s3 5 0 8M32 4c-3 3 3 5 0 8s3 5 0 8"/><rect x="7" y="26" width="34" height="16" rx="8"/><path d="M14 34h20"/></g></symbol>
+    <symbol id="i-tag" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 26 26 6h15v15L21 41a3 3 0 0 1-4.2 0L6 30.2a3 3 0 0 1 0-4.2Z"/><circle cx="33" cy="14" r="3"/><path d="m17 24 7 7M21 20l7 7"/></g></symbol>
+    <symbol id="i-whistle" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="14" r="5.5"/><path d="M13 9.5 21 6v4l-6.6 2.1M3 6l2 2M7 3l1 2.6"/></g></symbol>
   </svg>
 
-  <!-- Intro: a game clock runs to 45:00, then the whistle. Shown once per visit. -->
+  <!-- Intro: the game clock runs to 45:00, then the whistle. Shown once per visit. -->
   <div class="preloader" aria-hidden="true">
     <div class="preloader__inner">
-      <p class="preloader__kicker">First half</p>
-      <p class="preloader__clock"><span data-clock>00</span>:00</p>
+      <img class="preloader__logo" src="assets/img/logo.svg" alt="" width="616" height="482">
+      <div class="preloader__board">
+        <span class="preloader__label">1st half</span>
+        <span class="preloader__clock"><span data-clock>00</span>:00</span>
+      </div>
       <p class="preloader__word">Halftime</p>
     </div>
     <div class="preloader__progress"><span></span></div>
@@ -121,12 +113,11 @@
   <header class="header" data-header>
     <div class="header__inner">
       <a class="brand" href="#top" aria-label="Halftime Cuts — back to top">
-        <svg class="brand__mark" aria-hidden="true"><use href="#i-mark"/></svg>
-        <span class="brand__word">Halftime</span><span class="brand__serif">Cuts</span>
+        <img class="brand__logo" src="assets/img/logo.svg" alt="Halftime Cuts" width="616" height="482">
       </a>
 
       <nav class="nav" aria-label="Primary">
-        <a class="nav__link" href="#menu" data-nav="menu">Menu</a>
+        <a class="nav__link" href="#menu" data-nav="menu">Services</a>
         <a class="nav__link" href="#lineup" data-nav="lineup">Barbers</a>
         <a class="nav__link" href="#reviews" data-nav="reviews">Reviews</a>
         <a class="nav__link" href="#visit" data-nav="visit">Visit</a>
@@ -136,7 +127,7 @@
         <a class="icon-btn" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" aria-label="Halftime Cuts on Instagram">
           <svg aria-hidden="true"><use href="#i-instagram"/></svg>
         </a>
-        <a class="btn btn--red btn--sm" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book data-magnetic>
+        <a class="btn btn--orange btn--sm" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book data-magnetic>
           <span>Book Now</span><svg aria-hidden="true"><use href="#i-arrow"/></svg>
         </a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
@@ -149,13 +140,13 @@
 
   <div class="mobile-menu" id="mobile-menu" data-mobile-menu hidden>
     <nav class="mobile-menu__nav" aria-label="Mobile">
-      <a href="#menu" data-menu-link><span>01</span>Menu</a>
+      <a href="#menu" data-menu-link><span>01</span>Services</a>
       <a href="#lineup" data-menu-link><span>02</span>Barbers</a>
       <a href="#reviews" data-menu-link><span>03</span>Reviews</a>
       <a href="#visit" data-menu-link><span>04</span>Visit</a>
     </nav>
     <div class="mobile-menu__foot">
-      <a class="btn btn--red btn--block btn--lg" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book>
+      <a class="btn btn--orange btn--block btn--lg" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book>
         <span>Book Now</span><svg aria-hidden="true"><use href="#i-arrow"/></svg>
       </a>
       <div class="mobile-menu__meta">
@@ -168,61 +159,82 @@
   <main id="main">
     <!-- ============ HERO ============ -->
     <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero__field" aria-hidden="true"></div>
       <div class="hero__grid wrap">
-        <div class="hero__meta">
-          <p class="eyebrow" data-hero-fade><span class="live-dot" aria-hidden="true"></span>East Pasadena · Est. 2005</p>
-          <a class="rating-pill" href="#reviews" data-hero-fade>
-            <span class="stars" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
-            <strong>4.9</strong><span>370+ reviews</span>
-          </a>
-        </div>
+        <p class="eyebrow hero__eyebrow" data-hero-fade><span class="live-dot" aria-hidden="true"></span>Pasadena’s sports barbershop · Est. 2005</p>
 
         <h1 class="hero__title" id="hero-title">
-          <span class="hero__line hero__line--1"><span data-split="chars">Halftime</span></span>
-          <span class="hero__line hero__line--2"><span data-split="chars">Cuts</span></span>
+          <span class="visually-hidden">Halftime Cuts, barbershop in Pasadena — </span>
+          <span class="hero__line hero__line--1"><span data-split="chars">Best seat</span></span>
+          <span class="hero__line hero__line--2"><span data-split="chars">in the</span></span>
+          <span class="hero__line hero__line--3"><span data-split="chars">house.</span></span>
         </h1>
 
-        <p class="hero__aside" data-hero-fade>Sharp cuts. Hot towels.<br><em>The game’s on.</em></p>
-
         <div class="hero__art" data-hero-art>
-          <div class="arch">
-            <div class="arch__window">
-              <div class="pole" aria-hidden="true"><div class="pole__stripes"></div></div>
-              <div class="arch__shine" aria-hidden="true"></div>
+          <div class="court">
+            <div class="court__stripes" aria-hidden="true"></div>
+            <div class="court__face" aria-hidden="true">
+              <svg class="court__lines" viewBox="0 0 400 400">
+                <circle cx="200" cy="200" r="150"/>
+                <circle cx="200" cy="200" r="58"/>
+                <path d="M200 0v400"/>
+              </svg>
+              <svg class="court__ring" viewBox="0 0 400 400">
+                <defs><path id="court-circle" d="M200,200 m-172,0 a172,172 0 1,1 344,0 a172,172 0 1,1 -344,0"/></defs>
+                <text><textPath href="#court-circle" textLength="1076" lengthAdjust="spacing">Halftime Cuts ● Barbershop ● Pasadena, CA ● Est. 2005 ●</textPath></text>
+              </svg>
             </div>
-          </div>
-          <div class="badge" aria-hidden="true">
-            <svg class="badge__ring" viewBox="0 0 200 200">
-              <defs><path id="badge-circle" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
-              <text><textPath href="#badge-circle" textLength="488" lengthAdjust="spacing">Halftime Cuts · Pasadena, CA · Est. 2005 ·</textPath></text>
-            </svg>
-            <svg class="badge__mark"><use href="#i-mark"/></svg>
+            <div class="court__logo" data-tilt>
+              <img src="assets/img/logo.svg" alt="Halftime Cuts logo" width="616" height="482" fetchpriority="high">
+            </div>
           </div>
         </div>
 
         <div class="hero__foot">
-          <p class="hero__lede" data-hero-fade>A sports-house barbershop on Foothill Blvd. Precision fades, tapers, hot towel shaves and beard work — without the high prices.</p>
+          <p class="hero__lede" data-hero-fade>East Pasadena’s sports-house barbershop. Precision fades, tapers, hot towel shaves and beard work — with the game on, and without the high prices.</p>
           <div class="hero__ctas" data-hero-fade>
-            <a class="btn btn--red btn--lg" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book data-magnetic>
+            <a class="btn btn--orange btn--lg" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book data-magnetic>
               <span>Book Now</span><svg aria-hidden="true"><use href="#i-arrow"/></svg>
             </a>
-            <a class="btn btn--ghost btn--lg" href="#menu"><span>See the menu</span></a>
+            <a class="btn btn--ghost btn--lg" href="#menu"><span>See the playbook</span></a>
           </div>
         </div>
 
+        <!-- Broadcast-style score bug -->
+        <div class="scorebug" data-hero-fade>
+          <div class="scorebug__home">
+            <span class="scorebug__label">Home</span>
+            <span class="scorebug__team">Halftime</span>
+          </div>
+          <div class="scorebug__cell scorebug__cell--status">
+            <span class="scorebug__label"><span class="scorebug__live" data-live>Today</span></span>
+            <span class="scorebug__value" data-status-short>Tue–Sat · 9am–6pm</span>
+          </div>
+          <a class="scorebug__cell" href="#reviews">
+            <span class="scorebug__label">Rating</span>
+            <span class="scorebug__value">4.9 <svg aria-hidden="true"><use href="#i-star"/></svg> <small>370+ reviews</small></span>
+          </a>
+          <a class="scorebug__cell" href="#menu">
+            <span class="scorebug__label">Haircut</span>
+            <span class="scorebug__value">$45 <small>30 min</small></span>
+          </a>
+          <a class="scorebug__cta" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book>
+            <span><small>Next up</small>You</span><svg aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+        </div>
       </div>
     </section>
 
     <!-- ============ TICKER ============ -->
     <div class="ticker" aria-hidden="true">
-      <div class="ticker__band ticker__band--red">
+      <div class="ticker__band ticker__band--orange">
         <div class="ticker__track" data-marquee="1">
-          <div class="ticker__group"><span>Fades</span><i>✦</i><span>Tapers</span><i>✦</i><span>Hot Towel Shaves</span><i>✦</i><span>Beard Work</span><i>✦</i><span>Lineups</span><i>✦</i><span>Kids Cuts</span><i>✦</i></div>
+          <div class="ticker__group"><span>Fades</span><i></i><span>Tapers</span><i></i><span>Hot Towel Shaves</span><i></i><span>Beard Work</span><i></i><span>Lineups</span><i></i><span>Kids Cuts</span><i></i></div>
         </div>
       </div>
-      <div class="ticker__band ticker__band--navy">
+      <div class="ticker__band ticker__band--blue">
         <div class="ticker__track" data-marquee="-1">
-          <div class="ticker__group"><span>Game’s On</span><i>●</i><span>Walk In Sharp</span><i>●</i><span>Leave Sharper</span><i>●</i><span>Since 2005</span><i>●</i><span>Pasadena, CA</span><i>●</i></div>
+          <div class="ticker__group"><span>Game’s On</span><i></i><span>Walk In Sharp</span><i></i><span>Leave Sharper</span><i></i><span>Since 2005</span><i></i><span>Pasadena, CA</span><i></i></div>
         </div>
       </div>
     </div>
@@ -240,7 +252,7 @@
         <div class="shop__grid">
           <figure class="shop__photo" data-parallax-frame>
             <div class="photo photo--arch">
-              <div class="photo__fallback photo__fallback--navy photo__fallback--words" aria-hidden="true"><span>Est.<br>2005</span></div>
+              <div class="photo__fallback photo__fallback--blue photo__fallback--words" aria-hidden="true"><span>Est.<br>2005</span></div>
               <img src="assets/img/shop.jpg" alt="Inside Halftime Cuts on Foothill Blvd" loading="lazy" decoding="async" onerror="this.remove()">
             </div>
             <figcaption>3205 E Foothill Blvd — renovated, and the game’s always on.</figcaption>
@@ -257,29 +269,33 @@
           </div>
         </div>
 
-        <dl class="stats">
-          <div class="stat" data-reveal><dt>Established</dt><dd><span data-count="2005" data-count-from="1990">2005</span></dd></div>
-          <div class="stat" data-reveal><dt>Average rating</dt><dd><span data-count="4.9" data-decimals="1">4.9</span><small>/5</small></dd></div>
-          <div class="stat" data-reveal><dt>Client reviews</dt><dd><span data-count="370">370</span><small>+</small></dd></div>
-          <div class="stat" data-reveal><dt>Days a week</dt><dd><span data-count="5">5</span><small>Tue–Sat</small></dd></div>
-        </dl>
+        <div class="boxscore" data-reveal>
+          <p class="boxscore__title">Box score</p>
+          <dl class="stats">
+            <div class="stat"><dt>Established</dt><dd><span data-count="2005" data-count-from="1990">2005</span></dd></div>
+            <div class="stat"><dt>Average rating</dt><dd><span data-count="4.9" data-decimals="1">4.9</span><small>/5</small></dd></div>
+            <div class="stat"><dt>Client reviews</dt><dd><span data-count="370">370</span><small>+</small></dd></div>
+            <div class="stat"><dt>Game days a week</dt><dd><span data-count="5">5</span><small>Tue–Sat</small></dd></div>
+          </dl>
+        </div>
       </div>
     </section>
 
-    <!-- ============ MENU ============ -->
+    <!-- ============ PLAYBOOK (SERVICES) ============ -->
     <section class="menu section" id="menu" aria-labelledby="menu-title">
+      <div class="menu__court" aria-hidden="true"></div>
       <div class="wrap">
         <div class="section-head section-head--split">
           <div>
             <p class="kicker" data-reveal><span>02</span>Services</p>
-            <h2 class="h2" id="menu-title" data-split="words">The <em>menu.</em></h2>
+            <h2 class="h2" id="menu-title" data-split="words">The <em>playbook.</em></h2>
           </div>
-          <p class="section-intro" data-reveal>Every service starts with a real consultation, so you get the cut you actually came for. Tap any service to book it through Square.</p>
+          <p class="section-intro" data-reveal>Every service starts with a real consultation, so you get the cut you actually came for. Tap any play to book it through Square.</p>
         </div>
 
         <div class="menu__groups">
           <div class="menu__group">
-            <h3 class="menu__group-title" data-reveal>Cuts &amp; combos</h3>
+            <h3 class="menu__group-title" data-reveal><span>A</span>Cuts &amp; combos</h3>
             <ul class="menu__list">
               <li data-reveal>
                 <a class="svc" data-cursor="Book" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book>
@@ -321,7 +337,7 @@
           </div>
 
           <div class="menu__group">
-            <h3 class="menu__group-title" data-reveal>Beard &amp; shave</h3>
+            <h3 class="menu__group-title" data-reveal><span>B</span>Beard &amp; shave</h3>
             <ul class="menu__list">
               <li data-reveal>
                 <a class="svc" data-cursor="Book" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book>
@@ -355,7 +371,7 @@
         </div>
 
         <div class="menu__cta" data-reveal>
-          <a class="btn btn--red btn--lg" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book data-magnetic>
+          <a class="btn btn--orange btn--lg" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book data-magnetic>
             <span>Book your chair</span><svg aria-hidden="true"><use href="#i-arrow"/></svg>
           </a>
           <p>Secure online booking powered by Square.</p>
@@ -363,92 +379,92 @@
       </div>
     </section>
 
-    <!-- ============ LINEUP ============ -->
+    <!-- ============ STARTING LINEUP ============ -->
     <section class="lineup" id="lineup" aria-labelledby="lineup-title">
       <div class="lineup__pin">
         <div class="lineup__rail" data-lineup-rail>
           <div class="lineup__intro">
             <p class="kicker" data-reveal><span>03</span>The Barbers</p>
-            <h2 class="h2" id="lineup-title" data-split="words">The starting <em>lineup.</em></h2>
+            <h2 class="h2" id="lineup-title" data-split="words">Starting <em>lineup.</em></h2>
             <p class="section-intro" data-reveal>Four barbers. One standard. Pick your player — or grab whoever’s up next.</p>
             <p class="lineup__hint" aria-hidden="true" data-reveal><span></span><b class="lineup__hint-desk">Keep scrolling</b><b class="lineup__hint-touch">Swipe</b></p>
           </div>
 
           <div class="lineup__cards">
-
-          <article class="player">
-            <div class="player__photo">
-              <div class="photo">
-                <div class="photo__fallback photo__fallback--navy" aria-hidden="true"><span>G</span></div>
-                <img src="assets/img/barber-george.jpg" alt="George, owner and barber at Halftime Cuts" loading="lazy" decoding="async" onerror="this.remove()">
-                <span class="player__num" aria-hidden="true">01</span>
+            <article class="player">
+              <div class="player__photo">
+                <div class="photo">
+                  <div class="photo__fallback photo__fallback--blue" aria-hidden="true"><span>G</span></div>
+                  <img src="assets/img/barber-george.jpg" alt="George, owner and barber at Halftime Cuts" loading="lazy" decoding="async" onerror="this.remove()">
+                  <span class="player__num" aria-hidden="true">01</span>
+                  <span class="player__captain" aria-hidden="true">C</span>
+                </div>
               </div>
-            </div>
-            <div class="player__body">
-              <p class="player__role">Owner · Barber</p>
-              <h3 class="player__name">George</h3>
-              <p class="player__bio">Years in Burbank and the Valley before taking over Halftime. Regulars have stuck with him for years — the conversation’s half the reason.</p>
-              <a class="link-arrow" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book><span>Book with George</span><svg aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
-            </div>
-          </article>
-
-          <article class="player">
-            <div class="player__photo">
-              <div class="photo">
-                <div class="photo__fallback photo__fallback--red" aria-hidden="true"><span>J</span></div>
-                <img src="assets/img/barber-josh.jpg" alt="Josh, barber at Halftime Cuts" loading="lazy" decoding="async" onerror="this.remove()">
-                <span class="player__num" aria-hidden="true">02</span>
+              <div class="player__body">
+                <p class="player__role">Owner · Barber</p>
+                <h3 class="player__name">George</h3>
+                <p class="player__bio">Years in Burbank and the Valley before taking over Halftime. Regulars have stuck with him for years — the conversation’s half the reason.</p>
+                <a class="link-arrow" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book><span>Book with George</span><svg aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
               </div>
-            </div>
-            <div class="player__body">
-              <p class="player__role">Barber</p>
-              <h3 class="player__name">Josh</h3>
-              <p class="player__bio">Precision fades and tapers. Skill, professionalism and a great personality — clients call him a hair artist.</p>
-              <a class="link-arrow" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book><span>Book with Josh</span><svg aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
-            </div>
-          </article>
+            </article>
 
-          <article class="player">
-            <div class="player__photo">
-              <div class="photo">
-                <div class="photo__fallback photo__fallback--ink" aria-hidden="true"><span>R</span></div>
-                <img src="assets/img/barber-robert.jpg" alt="Robert, barber at Halftime Cuts" loading="lazy" decoding="async" onerror="this.remove()">
-                <span class="player__num" aria-hidden="true">03</span>
+            <article class="player">
+              <div class="player__photo">
+                <div class="photo">
+                  <div class="photo__fallback photo__fallback--orange" aria-hidden="true"><span>J</span></div>
+                  <img src="assets/img/barber-josh.jpg" alt="Josh, barber at Halftime Cuts" loading="lazy" decoding="async" onerror="this.remove()">
+                  <span class="player__num" aria-hidden="true">02</span>
+                </div>
               </div>
-            </div>
-            <div class="player__body">
-              <p class="player__role">Barber</p>
-              <h3 class="player__name">Robert</h3>
-              <p class="player__bio">Clean, consistent, reliable. One visit and clients are already planning to stick with Robert for the long haul.</p>
-              <a class="link-arrow" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book><span>Book with Robert</span><svg aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
-            </div>
-          </article>
+              <div class="player__body">
+                <p class="player__role">Barber</p>
+                <h3 class="player__name">Josh</h3>
+                <p class="player__bio">Precision fades and tapers. Skill, professionalism and a great personality — clients call him a hair artist.</p>
+                <a class="link-arrow" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book><span>Book with Josh</span><svg aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+              </div>
+            </article>
 
-          <article class="player">
-            <div class="player__photo">
-              <div class="photo">
-                <div class="photo__fallback photo__fallback--sand" aria-hidden="true"><span>S</span></div>
-                <img src="assets/img/barber-stef.jpg" alt="Stef, barber at Halftime Cuts" loading="lazy" decoding="async" onerror="this.remove()">
-                <span class="player__num" aria-hidden="true">04</span>
+            <article class="player">
+              <div class="player__photo">
+                <div class="photo">
+                  <div class="photo__fallback photo__fallback--navy" aria-hidden="true"><span>R</span></div>
+                  <img src="assets/img/barber-robert.jpg" alt="Robert, barber at Halftime Cuts" loading="lazy" decoding="async" onerror="this.remove()">
+                  <span class="player__num" aria-hidden="true">03</span>
+                </div>
               </div>
-            </div>
-            <div class="player__body">
-              <p class="player__role">Barber · Stylist</p>
-              <h3 class="player__name">Stef</h3>
-              <p class="player__bio">Detail-obsessed with serious technique — and great at making kids feel comfortable in the chair.</p>
-              <a class="link-arrow" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book><span>Book with Stef</span><svg aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
-            </div>
-          </article>
+              <div class="player__body">
+                <p class="player__role">Barber</p>
+                <h3 class="player__name">Robert</h3>
+                <p class="player__bio">Clean, consistent, reliable. One visit and clients are already planning to stick with Robert for the long haul.</p>
+                <a class="link-arrow" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book><span>Book with Robert</span><svg aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+              </div>
+            </article>
+
+            <article class="player">
+              <div class="player__photo">
+                <div class="photo">
+                  <div class="photo__fallback photo__fallback--ice" aria-hidden="true"><span>S</span></div>
+                  <img src="assets/img/barber-stef.jpg" alt="Stef, barber at Halftime Cuts" loading="lazy" decoding="async" onerror="this.remove()">
+                  <span class="player__num" aria-hidden="true">04</span>
+                </div>
+              </div>
+              <div class="player__body">
+                <p class="player__role">Barber · Stylist</p>
+                <h3 class="player__name">Stef</h3>
+                <p class="player__bio">Detail-obsessed with serious technique — and great at making kids feel comfortable in the chair.</p>
+                <a class="link-arrow" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book><span>Book with Stef</span><svg aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+              </div>
+            </article>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ EXPERIENCE ============ -->
+    <!-- ============ GAME DAY ============ -->
     <section class="exp section" aria-labelledby="exp-title">
       <div class="wrap">
         <div class="section-head">
-          <p class="kicker" data-reveal><span>04</span>The Experience</p>
+          <p class="kicker" data-reveal><span>04</span>Game Day</p>
           <h2 class="h2" id="exp-title" data-split="words">More than a <em>haircut.</em></h2>
         </div>
         <ol class="exp__list">
@@ -456,7 +472,7 @@
             <span class="exp__rule" aria-hidden="true"></span>
             <div class="exp__top"><span class="exp__n">01</span><svg class="exp__icon" aria-hidden="true"><use href="#i-tv"/></svg></div>
             <h3>The game’s always on.</h3>
-            <p>A sports-house barbershop since 2005. Catch the highlights from the chair — and talk about them.</p>
+            <p>A sports-house barbershop since 2005. Catch the highlights from the chair — and argue about them.</p>
           </li>
           <li class="exp__item" data-reveal>
             <span class="exp__rule" aria-hidden="true"></span>
@@ -467,8 +483,8 @@
           <li class="exp__item" data-reveal>
             <span class="exp__rule" aria-hidden="true"></span>
             <div class="exp__top"><span class="exp__n">03</span><svg class="exp__icon" aria-hidden="true"><use href="#i-tag"/></svg></div>
-            <h3>Fair prices. No velvet rope.</h3>
-            <p>High-quality cuts and shaves in a comfortable, casual shop — without the high-end markup.</p>
+            <h3>Fair prices. No VIP markup.</h3>
+            <p>High-quality cuts and shaves in a comfortable, casual shop — without the high-end price tag.</p>
           </li>
         </ol>
       </div>
@@ -480,7 +496,7 @@
         <div class="reviews__head">
           <div>
             <p class="kicker" data-reveal><span>05</span>Reviews</p>
-            <h2 class="h2" id="reviews-title" data-split="words">Word on <em>Foothill.</em></h2>
+            <h2 class="h2" id="reviews-title" data-split="words">Word from <em>the stands.</em></h2>
           </div>
           <div class="score" data-reveal>
             <p class="score__num"><span data-count="4.9" data-decimals="1">4.9</span></p>
@@ -496,11 +512,14 @@
         </div>
 
         <figure class="feature-quote">
-          <svg class="feature-quote__stars stars" aria-hidden="true" viewBox="0 0 120 24"><use href="#i-star" width="24" height="24"/><use href="#i-star" x="24" width="24" height="24"/><use href="#i-star" x="48" width="24" height="24"/><use href="#i-star" x="72" width="24" height="24"/><use href="#i-star" x="96" width="24" height="24"/></svg>
+          <span class="feature-quote__mark" aria-hidden="true">“</span>
           <blockquote>
-            <p data-split="words">“I became 10 years younger after I was blessed with my barber George. This place is absolutely beautiful… Highly recommend you take a visit!”</p>
+            <p data-split="words">I became 10 years younger after I was blessed with my barber George. This place is absolutely beautiful… Highly recommend you take a visit!</p>
           </blockquote>
-          <figcaption data-reveal><strong>Andy K.</strong><span>on George</span></figcaption>
+          <figcaption data-reveal>
+            <span class="stars" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
+            <strong>Andy K.</strong><span>on George</span>
+          </figcaption>
         </figure>
       </div>
 
@@ -511,7 +530,7 @@
             <p>“Great cut. Good prices. Josh cut my hair and was friendly. I recommend this shop.”</p>
             <p class="review-card__by"><strong>Halftime client</strong><span>on Josh</span></p>
           </li>
-          <li class="review-card review-card--red">
+          <li class="review-card review-card--orange">
             <span class="stars" role="img" aria-label="5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
             <p>“Robert is DA MAN!! Only my second visit — but I’ll be going to Robert for a long time.”</p>
             <p class="review-card__by"><strong>Halftime client</strong><span>on Robert</span></p>
@@ -521,7 +540,7 @@
             <p>“Every cut has been great. He’s always open to talk about everything and always gets me lookin fresh.”</p>
             <p class="review-card__by"><strong>3-year regular</strong><span>on George</span></p>
           </li>
-          <li class="review-card review-card--navy">
+          <li class="review-card review-card--blue">
             <span class="stars" role="img" aria-label="5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
             <p>“Got my cut by Stef and it was 10/10. Love her skill — I’ll be a consistent customer.”</p>
             <p class="review-card__by"><strong>Halftime client</strong><span>on Stef</span></p>
@@ -530,17 +549,17 @@
       </div>
     </section>
 
-    <!-- ============ INSTAGRAM ============ -->
+    <!-- ============ HIGHLIGHT REEL (INSTAGRAM) ============ -->
     <section class="gram section" aria-labelledby="gram-title">
       <div class="wrap gram__head">
-        <p class="kicker" data-reveal><span>06</span>Instagram</p>
+        <p class="kicker" data-reveal><span>06</span>Highlight Reel</p>
         <h2 class="gram__title" id="gram-title">
           <a href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener"><span data-split="chars">@halftimecuts</span></a>
         </h2>
         <div class="gram__row">
           <p class="section-intro" data-reveal>Fresh off the chair. Fades, tapers and beard work — straight from the shop floor.</p>
           <div data-reveal>
-            <a class="btn btn--ink btn--lg" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" data-magnetic>
+            <a class="btn btn--blue btn--lg" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" data-magnetic>
               <svg aria-hidden="true"><use href="#i-instagram"/></svg><span>Follow us</span>
             </a>
           </div>
@@ -548,39 +567,39 @@
       </div>
 
       <div class="gram__grid">
-        <a data-cursor="View" class="tile tile--bone" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" data-speed="-6" aria-label="Fades on Instagram">
+        <a data-cursor="View" class="tile tile--ice" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" data-speed="-6" aria-label="Fades on Instagram">
           <span class="tile__fallback"><em>Fades.</em></span>
           <img src="assets/img/ig-1.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()">
         </a>
-        <a data-cursor="View" class="tile tile--red" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" data-speed="8" aria-label="Tapers on Instagram">
+        <a data-cursor="View" class="tile tile--orange" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" data-speed="8" aria-label="Tapers on Instagram">
           <span class="tile__fallback"><em>Tapers.</em></span>
           <img src="assets/img/ig-2.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()">
         </a>
         <a data-cursor="View" class="tile tile--pole" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" data-speed="-10" aria-label="Halftime Cuts on Instagram">
-          <span class="tile__fallback tile__fallback--mark"><svg aria-hidden="true"><use href="#i-mark"/></svg></span>
+          <span class="tile__fallback tile__fallback--logo"><img src="assets/img/logo.svg" alt="" width="616" height="482" loading="lazy"></span>
           <img src="assets/img/ig-3.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()">
         </a>
-        <a data-cursor="View" class="tile tile--navy" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" data-speed="4" aria-label="Beard work on Instagram">
+        <a data-cursor="View" class="tile tile--blue" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" data-speed="4" aria-label="Beard work on Instagram">
           <span class="tile__fallback"><em>Beards.</em></span>
           <img src="assets/img/ig-4.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()">
         </a>
-        <a data-cursor="View" class="tile tile--ink" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" data-speed="-4" aria-label="Hot towel shaves on Instagram">
+        <a data-cursor="View" class="tile tile--navy" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" data-speed="-4" aria-label="Hot towel shaves on Instagram">
           <span class="tile__fallback"><em>Hot towel.</em></span>
           <img src="assets/img/ig-5.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()">
         </a>
-        <a data-cursor="View" class="tile tile--paper" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" data-speed="10" aria-label="Lineups on Instagram">
+        <a data-cursor="View" class="tile tile--white" href="https://www.instagram.com/halftimecuts/" target="_blank" rel="noopener" data-speed="10" aria-label="Lineups on Instagram">
           <span class="tile__fallback"><em>Lineups.</em></span>
           <img src="assets/img/ig-6.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()">
         </a>
       </div>
     </section>
 
-    <!-- ============ VISIT ============ -->
+    <!-- ============ HOME COURT (VISIT) ============ -->
     <section class="visit section" id="visit" aria-labelledby="visit-title">
       <div class="wrap visit__grid">
         <div class="visit__info">
           <p class="kicker" data-reveal><span>07</span>Visit</p>
-          <h2 class="h2" id="visit-title" data-split="words">Pull up a <em>chair.</em></h2>
+          <h2 class="h2" id="visit-title" data-split="words">Home <em>court.</em></h2>
 
           <address class="visit__address" data-reveal>
             <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Halftime+Cuts+3205+E+Foothill+Blvd+Pasadena+CA+91107" target="_blank" rel="noopener">
@@ -591,7 +610,7 @@
           <p class="status" data-status data-reveal><span class="status__dot" aria-hidden="true"></span><span class="status__text">Open Tuesday–Saturday, 9am–6pm</span></p>
 
           <table class="hours" data-reveal>
-            <caption class="visually-hidden">Opening hours</caption>
+            <caption>Schedule</caption>
             <tbody>
               <tr data-day="1"><th scope="row">Monday</th><td>Closed</td></tr>
               <tr data-day="2"><th scope="row">Tuesday</th><td>9am – 6pm</td></tr>
@@ -609,7 +628,7 @@
           </div>
 
           <div class="visit__ctas" data-reveal>
-            <a class="btn btn--red btn--lg" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book data-magnetic>
+            <a class="btn btn--orange btn--lg" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book data-magnetic>
               <span>Book Now</span><svg aria-hidden="true"><use href="#i-arrow"/></svg>
             </a>
             <a class="btn btn--ghost btn--lg" href="https://www.google.com/maps/dir/?api=1&amp;destination=Halftime+Cuts+3205+E+Foothill+Blvd+Pasadena+CA+91107" target="_blank" rel="noopener">
@@ -621,7 +640,7 @@
         <div class="visit__map" data-reveal>
           <div class="map-frame">
             <a class="map-fallback" href="https://www.google.com/maps/search/?api=1&amp;query=Halftime+Cuts+3205+E+Foothill+Blvd+Pasadena+CA+91107" target="_blank" rel="noopener">
-              <svg aria-hidden="true"><use href="#i-mark"/></svg>
+              <img src="assets/img/logo.svg" alt="" width="616" height="482" loading="lazy">
               <span>Open in Google Maps</span>
             </a>
             <iframe title="Map showing Halftime Cuts at 3205 E Foothill Blvd, Pasadena" src="https://www.google.com/maps?q=Halftime+Cuts,+3205+E+Foothill+Blvd,+Pasadena,+CA+91107&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -634,11 +653,19 @@
     <!-- ============ FINAL CTA ============ -->
     <section class="cta" aria-labelledby="cta-title">
       <div class="cta__panel" data-cta-panel>
-        <div class="cta__stripes" aria-hidden="true"></div>
+        <div class="cta__court" aria-hidden="true">
+          <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+            <path d="M600 0v800"/>
+            <circle cx="600" cy="400" r="210"/>
+            <circle class="fill" cx="600" cy="400" r="14"/>
+            <rect x="-2" y="230" width="150" height="340"/>
+            <rect x="1052" y="230" width="150" height="340"/>
+          </svg>
+        </div>
         <div class="cta__content">
-          <p class="kicker kicker--light">Tue–Sat · 9am–6pm</p>
-          <h2 class="cta__title" id="cta-title"><span data-split="chars">Your chair’s</span> <em data-split="chars">waiting.</em></h2>
-          <a class="btn btn--bone btn--xl" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book data-magnetic>
+          <p class="kicker kicker--light"><svg aria-hidden="true"><use href="#i-whistle"/></svg>Tue–Sat · 9am–6pm</p>
+          <h2 class="cta__title" id="cta-title"><span data-split="chars">You’re up</span> <em data-split="chars">next.</em></h2>
+          <a class="btn btn--orange btn--xl" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book data-magnetic>
             <span>Book Now</span><svg aria-hidden="true"><use href="#i-arrow"/></svg>
           </a>
           <a class="cta__phone" href="tel:+16267964253">or call (626) 796-4253</a>
@@ -651,8 +678,7 @@
     <div class="wrap footer__grid">
       <div class="footer__brand">
         <a class="brand brand--lg" href="#top" aria-label="Halftime Cuts — back to top">
-          <svg class="brand__mark" aria-hidden="true"><use href="#i-mark"/></svg>
-          <span class="brand__word">Halftime</span><span class="brand__serif">Cuts</span>
+          <img class="brand__logo" src="assets/img/logo.svg" alt="Halftime Cuts" width="616" height="482" loading="lazy">
         </a>
         <p>East Pasadena’s sports-house barbershop since 2005.</p>
       </div>
@@ -678,7 +704,7 @@
       </div>
     </div>
 
-    <p class="footer__word" aria-hidden="true"><span data-fit-inner>Halftime<em>Cuts</em></span></p>
+    <p class="footer__word" aria-hidden="true"><span data-fit-inner>Halftime <em>Cuts</em></span></p>
 
     <div class="wrap footer__legal">
       <p>© <span data-year>2026</span> Halftime Cuts · Pasadena, CA</p>
@@ -690,7 +716,7 @@
   <!-- Mobile: booking is always one thumb away. -->
   <div class="book-bar" data-book-bar>
     <a class="book-bar__call" href="tel:+16267964253" aria-label="Call Halftime Cuts"><svg aria-hidden="true"><use href="#i-phone"/></svg></a>
-    <a class="btn btn--red book-bar__btn" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book>
+    <a class="btn btn--orange book-bar__btn" href="https://www.halftimecuts.com/s/appointments" target="_blank" rel="noopener" data-book>
       <span>Book Now</span><svg aria-hidden="true"><use href="#i-arrow"/></svg>
     </a>
   </div>
