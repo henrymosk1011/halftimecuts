@@ -2,7 +2,7 @@
    Halftime Cuts — interactions & motion
    The first-paint entrance (intro curtain, hero) is pure CSS so the page
    renders immediately. This file adds scroll choreography (GSAP +
-   ScrollTrigger, Lenis smooth scrolling) and the accessibility behaviors.
+   ScrollTrigger on native browser scrolling) and the accessibility behaviors.
    Everything degrades to a fully readable static page without JS or with
    prefers-reduced-motion.
    ========================================================================== */
@@ -18,7 +18,6 @@
   var HOURS = { 2: [540, 1080], 3: [540, 1080], 4: [540, 1080], 5: [540, 1080], 6: [540, 1080] };
   var DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-  var lenis = null;
   var paused = root.classList.contains('is-paused');
 
   /* ------------------------------------------------------------------------
@@ -138,12 +137,8 @@
   }
 
   function scrollToTarget(target, done) {
-    var headerH = ($('[data-header]') || { offsetHeight: 0 }).offsetHeight;
+    // Native smooth scroll; CSS scroll-padding keeps targets clear of the fixed header.
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (lenis) {
-      lenis.scrollTo(target, { offset: target === 0 ? 0 : -headerH + 1, duration: 1.4, onComplete: done });
-      return;
-    }
     if (target === 0) window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
     else target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
     if (done) window.setTimeout(done, reduce ? 0 : 600);
@@ -182,7 +177,7 @@
     var label = $('[data-menu-label]', toggle);
     if (label) label.textContent = 'Close menu';
     inertTargets().forEach(function (el) { el.inert = true; });
-    if (lenis) lenis.stop(); else document.body.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
     var first = $('a', menu);
     if (first) window.setTimeout(function () { first.focus({ preventScroll: true }); }, 100);
   }
@@ -195,7 +190,7 @@
     var label = $('[data-menu-label]', toggle);
     if (label) label.textContent = 'Open menu';
     inertTargets().forEach(function (el) { el.inert = false; });
-    if (lenis) lenis.start(); else document.body.style.overflow = '';
+    document.body.style.overflow = '';
     window.setTimeout(function () { if (!menu.classList.contains('is-open')) menu.hidden = true; }, 800);
     if (!skipFocus && lastFocus) lastFocus.focus({ preventScroll: true });
   }
@@ -297,18 +292,6 @@
 
   var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  /* Smooth scroll ---------------------------------------------------------- */
-  if (typeof window.Lenis !== 'undefined') {
-    lenis = new window.Lenis({ lerp: 0.09, wheelMultiplier: 1, smoothWheel: true });
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
-    gsap.ticker.lagSmoothing(0);
-    // Hold the page still while the first-visit curtain plays.
-    if (root.classList.contains('intro')) {
-      lenis.stop();
-      window.setTimeout(function () { if (!root.classList.contains('menu-open')) lenis.start(); }, 1600);
-    }
-  }
   anchorLinks();
   window.setTimeout(function () { var pre = $('.preloader'); if (pre) pre.remove(); }, 2600);
 
@@ -404,7 +387,7 @@
   });
   gsap.to('.court__lines', {
     rotate: 120, ease: 'none',
-    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.6 }
+    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
   });
 
   /* Velocity-reactive ticker --------------------------------------------- */
@@ -546,7 +529,7 @@
         start: 'top top',
         end: function () { return '+=' + distance(); },
         pin: true,
-        scrub: 0.8,
+        scrub: true,
         anticipatePin: 1,
         invalidateOnRefresh: true,
         refreshPriority: 1
@@ -579,7 +562,7 @@
         var dist = distance();
         var x = gsap.utils.clamp(0, dist, card.offsetLeft - (pin.clientWidth - card.offsetWidth) / 2);
         var y = st.start + (dist ? x / dist : 0) * (st.end - st.start);
-        if (lenis) lenis.scrollTo(y, { immediate: true }); else window.scrollTo(0, y);
+        window.scrollTo(0, y);
         gsap.set(card, { opacity: 1, y: 0, rotate: 0 });
         gsap.set($('.player__num', card), { yPercent: 0 });
       });

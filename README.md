@@ -2,7 +2,7 @@
 
 Marketing site for **Halftime Cuts**, a sports-house barbershop at 3205 E Foothill Blvd, Pasadena, CA 91107.
 
-It's a static site (HTML, CSS and JS) with no build step. It's light-themed and sports-branded: the shop's shield logo, team colors (blue `#223D79`, orange `#D77200`, white), heavy italic sports type, a broadcast-style score bar and a "starting lineup" of barbers. Barber-pole stripes in team colors keep the barbershop feel. Motion is built with [GSAP](https://gsap.com) + ScrollTrigger and [Lenis](https://lenis.darkroom.engineering) smooth scrolling. Every "Book Now" opens the shop's Square booking page.
+It's a static site (HTML, CSS and JS) with no build step. It's light-themed and sports-branded: the shop's shield logo, team colors (blue `#223D79`, orange `#D77200`, white), heavy italic sports type, a broadcast-style score bar and a "starting lineup" of barbers. Barber-pole stripes in team colors keep the barbershop feel. Motion is built with [GSAP](https://gsap.com) + ScrollTrigger on native browser scrolling (no scroll-jacking, so the page responds instantly to wheel, trackpad and touch). Every "Book Now" opens the shop's Square booking page.
 
 ## Run it locally
 
@@ -57,7 +57,7 @@ accessibility.html      Accessibility statement (linked in the footer)
 site.webmanifest        App name, colors and icons
 assets/css/styles.css   Design tokens (brand colors, type, spacing) at the top, then sections in page order
 assets/js/main.js       Open/closed status, menu, booking bar, pause control, focus handling, scroll animation
-assets/vendor/          GSAP 3.15 + ScrollTrigger, Lenis 1.3 (vendored, no CDN)
+assets/vendor/          GSAP 3.15 + ScrollTrigger (vendored, no CDN)
 assets/fonts/           Archivo upright + italic, self-hosted (OFL), trimmed to Latin and the weights/widths in use
 assets/img/             Logo (SVG + original PNG), favicons, social share image, and your photos
 ```

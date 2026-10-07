@@ -80,10 +80,6 @@ html {
 @media (prefers-reduced-motion: no-preference) {
   html:not(.motion) { scroll-behavior: smooth; }
 }
-/* Lenis states */
-html.lenis, html.lenis body { height: auto; }
-.lenis.lenis-stopped { overflow: clip; }
-.lenis.lenis-smooth iframe { pointer-events: none; }
 
 body {
   margin: 0;
