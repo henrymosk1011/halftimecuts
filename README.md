@@ -105,6 +105,10 @@ WAVE's AIM score counts *alerts* as well as errors. To keep it high:
 - Don't put several links to the same address next to each other.
 - Use real headings (`h2`/`h3`) for anything that looks like a heading.
 - Keep text above 10px.
+- Don't add "screen-reader-only" text squeezed into a 1px box (the usual `.visually-hidden` / `sr-only` trick). WAVE reports every one as "Very small text". This site gives screen readers extra words without it:
+  - Links that open a new tab get `target="_blank" rel="noopener" aria-describedby="new-tab"`. That points at one hidden "Opens in a new tab" note at the top of the page.
+  - Icon-only buttons and links get an `aria-label`.
+  - Headings animated letter by letter get their full text as an `aria-label` (added automatically by `main.js`).
 - Never hide text with `opacity` or transparent colors while it's on the page. WAVE counts see-through text as a contrast error. Scroll reveals here use a clip "wipe" instead, so text is always solid.
 
 What's in place:
@@ -123,14 +127,15 @@ What's in place:
   - `prefers-reduced-motion` is honored.
   - A **Pause animations** button (header, mobile menu, footer) stops every looping animation and remembers the choice.
 - **Screen readers:**
-  - Animated headings are announced as normal text, and counters announce their final number.
-  - Links that open a new tab say so.
+  - Animated headings are announced as normal text. Counters always expose their final number; the ticking digits are a decorative layer on top.
+  - Links that open a new tab say so (as a description, after the link text).
   - The "Today" marker in the hours is real text.
 - **Touch and layout:** tap targets are at least 24×24px, and grids and headings reflow down to 320px without cutting off content.
 - **Accessibility statement:** [`accessibility.html`](accessibility.html) is linked in the footer and includes a phone and email contact for anyone who has trouble.
 
 Keeping it compliant as the site changes:
 
+- Copy an existing link when you add one that opens Square, Instagram or Maps. It already has the new-tab description.
 - Give every new photo a short, specific `alt` (for example, "Skin fade with a hard part by Josh"). Use `alt=""` only for decorative images.
 - Stick to the color tokens in `styles.css`. Orange text on white is only allowed at large sizes.
 - Caption any video you add, and don't add autoplaying sound.

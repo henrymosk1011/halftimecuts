@@ -174,8 +174,7 @@
     });
     root.classList.add('menu-open');
     toggle.setAttribute('aria-expanded', 'true');
-    var label = $('[data-menu-label]', toggle);
-    if (label) label.textContent = 'Close menu';
+    toggle.setAttribute('aria-label', 'Close menu');
     inertTargets().forEach(function (el) { el.inert = true; });
     document.body.style.overflow = 'hidden';
     var first = $('a', menu);
@@ -187,8 +186,7 @@
     menu.classList.remove('is-open');
     root.classList.remove('menu-open');
     toggle.setAttribute('aria-expanded', 'false');
-    var label = $('[data-menu-label]', toggle);
-    if (label) label.textContent = 'Open menu';
+    toggle.setAttribute('aria-label', 'Open menu');
     inertTargets().forEach(function (el) { el.inert = false; });
     document.body.style.overflow = '';
     window.setTimeout(function () { if (!menu.classList.contains('is-open')) menu.hidden = true; }, 800);
@@ -251,17 +249,6 @@
     sync();
   }
 
-  /* Animated counters: screen readers get the final number, not the ticking one. */
-  function counterLabels() {
-    $$('[data-count]').forEach(function (el) {
-      var sr = document.createElement('span');
-      sr.className = 'visually-hidden';
-      sr.textContent = el.textContent;
-      el.setAttribute('aria-hidden', 'true');
-      el.parentNode.insertBefore(sr, el);
-    });
-  }
-
   /* ------------------------------------------------------------------------
      Boot
      ------------------------------------------------------------------------ */
@@ -272,7 +259,6 @@
   mobileMenu();
   bookBar();
   motionToggle();
-  counterLabels();
 
   var hasGsap = typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined';
   var motion = root.classList.contains('motion') && hasGsap;
@@ -319,7 +305,6 @@
   /* Split text ------------------------------------------------------------- */
   function splitText(el, mode) {
     if (el.__split) return el.__split;
-    var plain = el.textContent.replace(/\s+/g, ' ').trim();
     var words = [];
     var chars = [];
 
@@ -350,27 +335,23 @@
             words.push(wi);
           });
           child.parentNode.replaceChild(frag, child);
-        } else if (child.nodeType === 1 && child.tagName !== 'BR' && !child.classList.contains('visually-hidden')) {
+        } else if (child.nodeType === 1 && child.tagName !== 'BR') {
           walk(child);
         }
       });
     })(el);
 
-    // Screen readers get the original sentence; the animated pieces are hidden.
-    var visual = document.createElement('span');
-    visual.setAttribute('aria-hidden', 'true');
-    var keep = [];
-    while (el.firstChild) {
-      var n = el.firstChild;
-      if (n.nodeType === 1 && n.classList.contains('visually-hidden')) { keep.push(n); el.removeChild(n); continue; }
-      visual.appendChild(n);
+    // Word splits keep real words and spaces, so they read normally. Letter splits
+    // would be spelled out, so the letters are hidden and the heading carries the
+    // phrase as its name. (No off-screen copy: checkers flag those as tiny text.)
+    var heading = el.closest('h1, h2, h3, h4, h5, h6');
+    if (mode === 'chars' && heading && !el.closest('[aria-hidden="true"]')) {
+      if (!heading.hasAttribute('aria-label')) heading.setAttribute('aria-label', heading.textContent.replace(/\s+/g, ' ').trim());
+      var visual = document.createElement('span');
+      visual.setAttribute('aria-hidden', 'true');
+      while (el.firstChild) visual.appendChild(el.firstChild);
+      el.appendChild(visual);
     }
-    var sr = document.createElement('span');
-    sr.className = 'visually-hidden';
-    sr.textContent = plain.replace(/\s*\(opens in new tab\)$/, '');
-    el.appendChild(sr);
-    el.appendChild(visual);
-    keep.forEach(function (k) { el.appendChild(k); });
 
     el.__split = { words: words, chars: chars };
     return el.__split;
@@ -491,17 +472,30 @@
     });
   });
 
-  // Counters.
+  // Counters. The real number never changes, so screen readers always get the
+  // final figure; a decorative copy ticks up on top of it while it reveals.
   $$('[data-count]').forEach(function (el) {
     var end = parseFloat(el.getAttribute('data-count'));
     var from = parseFloat(el.getAttribute('data-count-from') || '0');
     var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
-    var state = { v: from };
-    el.textContent = from.toFixed(decimals);
-    onReveal(el, function () {
+    var value = document.createElement('span');
+    value.className = 'count__value';
+    value.textContent = el.textContent;
+    el.textContent = '';
+    el.appendChild(value);
+    var host = el.closest('[data-reveal]') || el;
+    onReveal(host, function () {
+      var tick = document.createElement('span');
+      tick.className = 'count__tick';
+      tick.setAttribute('aria-hidden', 'true');
+      tick.textContent = from.toFixed(decimals);
+      el.appendChild(tick);
+      el.classList.add('is-counting');
+      var state = { v: from };
       gsap.to(state, {
         v: end, duration: 2, ease: 'power3.out',
-        onUpdate: function () { el.textContent = state.v.toFixed(decimals); }
+        onUpdate: function () { tick.textContent = state.v.toFixed(decimals); },
+        onComplete: function () { el.classList.remove('is-counting'); tick.remove(); }
       });
     });
   });

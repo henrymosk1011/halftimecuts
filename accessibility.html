@@ -20,6 +20,7 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <p id="new-tab" hidden>Opens in a new tab</p>
 
   <header class="header is-scrolled">
     <div class="header__inner">
@@ -27,8 +28,8 @@
         <img class="brand__logo" src="assets/img/logo.svg" alt="" width="616" height="482">
       </a>
       <div class="header__actions">
-        <a class="btn btn--orange btn--sm" href="https://www.halftimecuts.com/s/appointments?ref=accessibility" target="_blank" rel="noopener">
-          <span>Book Now</span><span class="visually-hidden"> (opens in new tab)</span>
+        <a class="btn btn--orange btn--sm" href="https://www.halftimecuts.com/s/appointments?ref=accessibility" target="_blank" rel="noopener" aria-describedby="new-tab">
+          <span>Book Now</span>
         </a>
       </div>
     </div>

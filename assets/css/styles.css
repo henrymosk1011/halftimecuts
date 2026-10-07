@@ -116,14 +116,6 @@ button { font: inherit; color: inherit; }
 /* Programmatic focus targets (sections reached via in-page links) don't need a ring */
 [tabindex="-1"]:focus { outline: none; }
 
-.visually-hidden {
-  position: absolute !important;
-  width: 1px; height: 1px;
-  padding: 0; margin: -1px;
-  overflow: hidden; clip: rect(0 0 0 0);
-  white-space: nowrap; border: 0;
-}
-
 .skip-link {
   position: fixed;
   top: 12px; left: 12px;
@@ -237,6 +229,12 @@ button { font: inherit; color: inherit; }
   margin: -0.08em -0.12em -0.12em -0.02em;
 }
 .wi, .c { display: inline-block; will-change: transform; }
+
+/* Counters (set up by JS): the real number stays put for screen readers and is
+   clipped (never faded) while a decorative copy ticks up over it. */
+[data-count] { display: inline-block; position: relative; }
+.count__tick { position: absolute; top: 0; left: 0; white-space: nowrap; }
+.is-counting > .count__value { display: inline-block; clip-path: inset(0 0 100% 0); }
 
 /* ---------- Buttons & links ---------- */
 .btn {
@@ -490,7 +488,7 @@ button { font: inherit; color: inherit; }
   transition: transform 0.6s var(--ease), height 0.5s var(--ease);
 }
 .header.is-scrolled .brand__logo { height: 46px; }
-.brand:hover .brand__logo { transform: rotate(-4deg) scale(1.04); }
+a.brand:hover .brand__logo { transform: rotate(-4deg) scale(1.04); }
 .brand--lg .brand__logo { height: 110px; }
 
 .nav { display: none; }
@@ -665,6 +663,9 @@ button { font: inherit; color: inherit; }
   text-transform: uppercase;
   color: var(--blue);
 }
+/* Separators and arrows are drawn as generated content (with empty alt text) so they're never
+   read aloud and never sit in a tiny box of their own that checkers mistake for small text. */
+.eyebrow__sep::before { content: "·"; content: "·" / ""; }
 .live-dot {
   position: relative;
   width: 9px; height: 9px;
@@ -1998,6 +1999,7 @@ html:not(.motion) .review-card { scroll-snap-align: center; }
 .footer__legal a { display: inline-block; padding-block: 4px; text-decoration: none; }
 .footer__legal { align-items: center; }
 .footer__legal a:hover { color: var(--navy); }
+.footer__top::after { content: "↑"; content: "↑" / ""; margin-left: 0.35em; }
 @media (max-width: 899px) { .footer__legal { padding-bottom: calc(100px + env(safe-area-inset-bottom)); } }
 
 /* ---------- Mobile booking bar ---------- */
@@ -2062,10 +2064,11 @@ html:not(.motion) .review-card { scroll-snap-align: center; }
   white-space: nowrap;
   transform: translate(14px, 14px) scale(0);
   transform-origin: top left;
-  transition: transform 0.45s var(--ease);
+  visibility: hidden;
+  transition: transform 0.45s var(--ease), visibility 0s linear 0.45s;
 }
 .cursor__label svg { width: 13px; height: 13px; }
-.cursor.is-active .cursor__label { transform: translate(14px, 14px) scale(1); }
+.cursor.is-active .cursor__label { transform: translate(14px, 14px) scale(1); visibility: visible; transition: transform 0.45s var(--ease), visibility 0s; }
 
 /* ---------- FAQ ---------- */
 .faq { background: var(--ice); }
