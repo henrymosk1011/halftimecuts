@@ -29,8 +29,8 @@ Point `halftimecuts.com` at the host once it's live.
 | Instagram handle | Search `instagram.com/halftimecuts` | `@halftimecuts` matches the shop's Facebook and X handles but couldn't be verified directly. |
 | Hours | `.hours` table, footer, score bar, CTA copy, FAQ, `HOURS` in `assets/js/main.js`, JSON-LD | The current site says **Tue–Sat 9am–6pm** (closed Sun & Mon). Some directories still list Mon–Sat. |
 | Rating & review count | Score bar, box score, reviews header (search `4.9` and `370`) | Taken from public review aggregators. Match them to the Google Business Profile. |
-| Reviews | `#reviews` section | The quotes come from public review snippets. Swap in exact Google reviews (first name + last initial). Each card is a simple `<li class="review-card">`. |
-| Barber lineup | `#lineup` section | George (owner), Josh, Robert and Stef come up most in recent reviews. Older listings also mention Lamar, Wilson and Cameron, so confirm who's currently behind the chair. |
+| Reviews | `#reviews` section | The quotes come from public review snippets. The Cameron and Fernando M. cards are condensed from search summaries rather than copied word for word, so replace them first. Swap in exact Google reviews (first name + last initial). Each card is a simple `<li class="review-card">`. |
+| Barber bios | `#lineup` section | The lineup is George (owner), Josh, Wilson, Cameron and Kevin. George's, Josh's and Cameron's bios come from reviews. Wilson's uses the shop's own "our chill guy" line. Kevin's is generic because nothing about him is published, so swap in a line or two from each barber. |
 | Phone | Search `796-4253` | `(626) 796-4253` is what the current site lists. One directory shows `(626) 514-3143`. |
 | Walk-ins / parking | `#faq` section + FAQ in the JSON-LD | Not published anywhere I could find, so the FAQ doesn't mention them. If they take walk-ins or have parking, add a question. These are common local searches. |
 
@@ -41,7 +41,7 @@ Every photo slot has a designed fallback, so the site looks finished without pho
 | File | Shows up in | Suggested size |
 | --- | --- | --- |
 | `shop.jpg` | "The Shop" arch | 1200 × 1560, portrait |
-| `barber-george.jpg`, `barber-josh.jpg`, `barber-robert.jpg`, `barber-stef.jpg` | Barber cards | 960 × 1200, portrait |
+| `barber-george.jpg`, `barber-josh.jpg`, `barber-wilson.jpg`, `barber-cameron.jpg`, `barber-kevin.jpg` | Barber cards | 960 × 1200, portrait |
 | `ig-1.jpg` … `ig-6.jpg` | Instagram tiles (decorative; clicking anywhere on the grid opens Instagram, and the "Follow us" button is the accessible link) | 800 × 1000, portrait |
 
 Compress images before uploading (for example with [Squoosh](https://squoosh.app)) and keep each under ~250 KB.
@@ -105,6 +105,7 @@ WAVE's AIM score counts *alerts* as well as errors. To keep it high:
 - Don't put several links to the same address next to each other.
 - Use real headings (`h2`/`h3`) for anything that looks like a heading.
 - Keep text above 10px.
+- Never hide text with `opacity` or transparent colors while it's on the page. WAVE counts see-through text as a contrast error. Scroll reveals here use a clip "wipe" instead, so text is always solid.
 
 What's in place:
 

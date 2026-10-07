@@ -874,7 +874,7 @@ a.scorebug__cell:hover { background: rgba(255, 255, 255, 0.06); }
   font-stretch: 100%;
   letter-spacing: 0.02em;
   text-transform: none;
-  color: rgba(255, 255, 255, 0.72);
+  color: #BCC0CA;   /* 72% white on navy, as a solid colour */
 }
 .scorebug__live {
   display: inline-flex;
@@ -1270,7 +1270,7 @@ a.scorebug__cell:hover { background: rgba(255, 255, 255, 0.06); }
   .svc:hover::before { transform: scaleY(1); }
   .svc:hover .svc__name, .svc:hover .svc__desc { transform: translateX(10px); }
   .svc:hover .svc__price { transform: translateX(-10px); color: var(--orange-2); }
-  .svc:hover .svc__desc, .svc:hover .svc__time { color: rgba(255, 255, 255, 0.78); }
+  .svc:hover .svc__desc, .svc:hover .svc__time { color: #CFD5E3; }
   .svc:hover .svc__go { transform: scale(1) translateX(-10px); }
 }
 @media (hover: none) {
@@ -1361,6 +1361,7 @@ a.scorebug__cell:hover { background: rgba(255, 255, 255, 0.06); }
   -webkit-text-stroke: 2px var(--white);
   pointer-events: none;
 }
+.player__num::before { content: attr(data-num); }
 .player__photo:has(.photo__fallback--ice) .player__num { -webkit-text-stroke-color: var(--blue); }
 .player__captain {
   position: absolute;
@@ -1570,6 +1571,49 @@ a.scorebug__cell:hover { background: rgba(255, 255, 255, 0.06); }
 .motion .reviews__track { animation: marquee 56s linear infinite; padding-inline: 0; }
 .motion .reviews__marquee:hover .reviews__track { animation-play-state: paused; }
 html:not(.motion) .reviews__marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; scroll-snap-type: x mandatory; }
+.reviews__hint { display: none; }
+@media (max-width: 899px), (hover: none) and (pointer: coarse) {
+  .reviews__marquee {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .reviews__marquee::-webkit-scrollbar { display: none; }
+  .motion .reviews__track { animation: none; padding-inline: var(--gutter); }
+  .reviews__track > [aria-hidden="true"] { display: none; }
+  .review-card { scroll-snap-align: start; width: min(84vw, 380px); }
+  .reviews__hint {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 18px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    font-stretch: 115%;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .reviews__hint span {
+    position: relative;
+    width: 56px; height: 3px;
+    border-radius: 2px;
+    overflow: hidden;
+    background: var(--ice-2);
+  }
+  .reviews__hint span::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--orange);
+    animation: hint 2.2s var(--ease-in-out) infinite;
+  }
+}
 html:not(.motion) .review-card { scroll-snap-align: center; }
 @keyframes marquee { to { transform: translate3d(-50%, 0, 0); } }
 
@@ -1615,7 +1659,7 @@ html:not(.motion) .review-card { scroll-snap-align: center; }
 .review-card--blue { background: var(--blue); color: var(--white); box-shadow: none; }
 .review-card--blue .stars { color: var(--orange-2); }
 .review-card--blue .review-card__by { border-color: rgba(255, 255, 255, 0.2); }
-.review-card--blue .review-card__by span { color: rgba(255, 255, 255, 0.75); }
+.review-card--blue .review-card__by span { color: #C8CEDE; }
 
 /* ---------- Highlight reel (Instagram) ---------- */
 .gram { background: var(--ice); overflow: clip; padding-bottom: clamp(64px, 7vw, 110px); }
@@ -2109,7 +2153,8 @@ html:not(.motion) .review-card { scroll-snap-align: center; }
 .is-paused .court__logo img,
 .is-paused .live-dot::after,
 .is-paused .scorebug__live::before,
-.is-paused .lineup__hint span::after { animation-play-state: paused !important; }
+.is-paused .lineup__hint span::after,
+.is-paused .reviews__hint span::after { animation-play-state: paused !important; }
 .is-paused .reviews__marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; scroll-snap-type: x mandatory; }
 .is-paused .reviews__track { animation: none !important; padding-inline: var(--gutter); }
 .is-paused .reviews__track > [aria-hidden="true"] { display: none; }
@@ -2127,7 +2172,7 @@ html:not(.motion) .review-card { scroll-snap-align: center; }
 }
 
 /* ---------- Initial states for scroll animations (only when motion is on) ---------- */
-.motion [data-reveal] { opacity: 0; transform: translateY(36px); }
+.motion [data-reveal]:not(.is-revealed) { clip-path: inset(0 0 100% 0); transform: translateY(28px); }
 .motion [data-split] { visibility: hidden; }
 
 /* ---------- Reduced motion ---------- */

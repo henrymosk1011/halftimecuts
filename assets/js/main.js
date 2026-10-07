@@ -449,9 +449,24 @@
     });
   });
 
+  // Reveal = wipe + rise. Text is never made transparent, so contrast checkers
+  // (WAVE, axe) read real colours whatever the scroll position.
+  var HIDDEN_CLIP = 'inset(0% 0% 100% 0%)';
+  var SHOWN_CLIP = 'inset(0% 0% 0% 0%)';
+  function showNow(el) {
+    if (el.classList.contains('is-revealed')) return;
+    el.classList.add('is-revealed');
+    gsap.getTweensOf(el).forEach(function (tw) { if (!tw.scrollTrigger) tw.kill(); });
+    gsap.set(el, { clearProps: 'clipPath,transform' });
+  }
   $$('[data-reveal]').forEach(function (el) {
     onReveal(el, function (i) {
-      gsap.to(el, { opacity: 1, y: 0, duration: 1.1, delay: Math.min(i, 6) * 0.09, overwrite: true });
+      if (el.classList.contains('is-revealed')) return;
+      gsap.fromTo(el, { clipPath: HIDDEN_CLIP, y: 28 }, {
+        clipPath: SHOWN_CLIP, y: 0, duration: 1.1, ease: 'power3.out',
+        delay: Math.min(i, 6) * 0.09, clearProps: 'clipPath,transform'
+      });
+      el.classList.add('is-revealed');
     });
   });
 
@@ -460,11 +475,8 @@
     var t = e.target;
     if (!t || !t.closest) return;
     for (var n = t; n && n !== document.body; n = n.parentElement) {
-      if (parseFloat(window.getComputedStyle(n).opacity) >= 1) continue;
-      var tweens = gsap.getTweensOf(n);
-      var scrubbed = tweens.some(function (tw) { return tw.scrollTrigger; });
-      tweens.forEach(function (tw) { if (!tw.scrollTrigger) tw.progress(1); });
-      if (!scrubbed) gsap.set(n, { opacity: 1, y: 0 });
+      if (n.hasAttribute('data-reveal')) { showNow(n); continue; }
+      if (n.__pendingReveal) { n.__pendingReveal = false; gsap.getTweensOf(n).forEach(function (tw) { if (!tw.scrollTrigger) tw.kill(); }); gsap.set(n, { clearProps: 'clipPath,transform' }); }
     }
     $$('.wi, .c', t).concat($$('.wi, .c', t.closest('[data-split]') || document.createElement('i')))
       .forEach(function (piece) { gsap.set(piece, { yPercent: 0 }); });
@@ -563,7 +575,7 @@
         var x = gsap.utils.clamp(0, dist, card.offsetLeft - (pin.clientWidth - card.offsetWidth) / 2);
         var y = st.start + (dist ? x / dist : 0) * (st.end - st.start);
         window.scrollTo(0, y);
-        gsap.set(card, { opacity: 1, y: 0, rotate: 0 });
+        gsap.set(card, { y: 0, rotate: 0 });
         gsap.set($('.player__num', card), { yPercent: 0 });
       });
     };
@@ -572,8 +584,13 @@
   });
   mm.add('(max-width: 1023px), (max-height: 639px)', function () {
     $$('.player').forEach(function (card) {
-      gsap.set(card, { y: 40, opacity: 0 });
-      onReveal(card, function (i) { gsap.to(card, { y: 0, opacity: 1, duration: 1, delay: i * 0.1 }); });
+      gsap.set(card, { clipPath: HIDDEN_CLIP, y: 40 });
+      card.__pendingReveal = true;
+      onReveal(card, function (i) {
+        if (!card.__pendingReveal) return;
+        card.__pendingReveal = false;
+        gsap.to(card, { clipPath: SHOWN_CLIP, y: 0, duration: 1, ease: 'power3.out', delay: i * 0.1, clearProps: 'clipPath,transform' });
+      });
     });
     return function () { gsap.set('.player', { clearProps: 'all' }); };
   });

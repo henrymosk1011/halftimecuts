@@ -143,7 +143,7 @@
         "mainEntity": [
           { "@type": "Question", "name": "How do I book an appointment at Halftime Cuts?", "acceptedAnswer": { "@type": "Answer", "text": "Book online any time through our Square booking page — pick your barber, your service and a time that works. Prefer to talk to someone? Call us at (626) 796-4253." } },
           { "@type": "Question", "name": "How much is a haircut?", "acceptedAnswer": { "@type": "Answer", "text": "A haircut is $45 and takes about 30 minutes. A haircut with a beard trim is $65, and a haircut with the full beard service or a hot towel shave is $80." } },
-          { "@type": "Question", "name": "Do you cut kids’ hair?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Kids cuts are available — you’ll see current pricing and open times when you book. Stef is a favorite with younger clients." } },
+          { "@type": "Question", "name": "Do you cut kids’ hair?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Kids cuts are available — you’ll see current pricing and open times when you book." } },
           { "@type": "Question", "name": "What are your hours?", "acceptedAnswer": { "@type": "Answer", "text": "We’re open Tuesday through Saturday, 9am to 6pm, and closed on Sunday and Monday." } },
           { "@type": "Question", "name": "Where is Halftime Cuts located?", "acceptedAnswer": { "@type": "Answer", "text": "We’re at 3205 E Foothill Blvd, Pasadena, CA 91107 — in East Pasadena near the 210, a few minutes from Sierra Madre, Arcadia and Altadena." } },
           { "@type": "Question", "name": "Do you offer beard trims and hot towel shaves?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We do beard trims ($25), a full beard service with shape, lineup and neck shave ($40), and classic hot towel shaves ($50)." } }
@@ -472,7 +472,7 @@
           <div class="lineup__intro">
             <p class="kicker" data-reveal><span>03</span>The Barbers</p>
             <h2 class="h2" id="lineup-title" data-split="words">Starting <em>lineup.</em></h2>
-            <p class="section-intro" data-reveal>Four barbers. One standard. Pick your player — or grab whoever’s up next.</p>
+            <p class="section-intro" data-reveal>Five barbers. One standard. Pick your player — or grab whoever’s up next.</p>
             <p class="lineup__hint" aria-hidden="true" data-reveal><span></span><b class="lineup__hint-desk">Keep scrolling</b><b class="lineup__hint-touch">Swipe</b></p>
           </div>
 
@@ -482,7 +482,7 @@
                 <div class="photo">
                   <div class="photo__fallback photo__fallback--blue" aria-hidden="true"><span>G</span></div>
                   <img src="assets/img/barber-george.jpg" alt="George, owner and barber at Halftime Cuts" loading="lazy" decoding="async" onerror="this.remove()">
-                  <span class="player__num" aria-hidden="true">01</span>
+                  <span class="player__num" data-num="01" aria-hidden="true"></span>
                   <span class="player__captain" aria-hidden="true">C</span>
                 </div>
               </div>
@@ -499,7 +499,7 @@
                 <div class="photo">
                   <div class="photo__fallback photo__fallback--orange" aria-hidden="true"><span>J</span></div>
                   <img src="assets/img/barber-josh.jpg" alt="Josh, barber at Halftime Cuts" loading="lazy" decoding="async" onerror="this.remove()">
-                  <span class="player__num" aria-hidden="true">02</span>
+                  <span class="player__num" data-num="02" aria-hidden="true"></span>
                 </div>
               </div>
               <div class="player__body">
@@ -513,32 +513,48 @@
             <article class="player">
               <div class="player__photo">
                 <div class="photo">
-                  <div class="photo__fallback photo__fallback--navy" aria-hidden="true"><span>R</span></div>
-                  <img src="assets/img/barber-robert.jpg" alt="Robert, barber at Halftime Cuts" loading="lazy" decoding="async" onerror="this.remove()">
-                  <span class="player__num" aria-hidden="true">03</span>
+                  <div class="photo__fallback photo__fallback--navy" aria-hidden="true"><span>W</span></div>
+                  <img src="assets/img/barber-wilson.jpg" alt="Wilson, barber at Halftime Cuts" loading="lazy" decoding="async" onerror="this.remove()">
+                  <span class="player__num" data-num="03" aria-hidden="true"></span>
                 </div>
               </div>
               <div class="player__body">
                 <p class="player__role">Barber</p>
-                <h3 class="player__name">Robert</h3>
-                <p class="player__bio">Clean, consistent, reliable. One visit and clients are already planning to stick with Robert for the long haul.</p>
-                <a class="link-arrow" href="https://www.halftimecuts.com/s/appointments?barber=robert" target="_blank" rel="noopener" data-book><span>Book with Robert</span><svg aria-hidden="true"><use href="#i-arrow-right"/></svg><span class="visually-hidden"> (opens in new tab)</span></a>
+                <h3 class="player__name">Wilson</h3>
+                <p class="player__bio">Our chill guy — laid-back in the chair, sharp on the details.</p>
+                <a class="link-arrow" href="https://www.halftimecuts.com/s/appointments?barber=wilson" target="_blank" rel="noopener" data-book><span>Book with Wilson</span><svg aria-hidden="true"><use href="#i-arrow-right"/></svg><span class="visually-hidden"> (opens in new tab)</span></a>
               </div>
             </article>
 
             <article class="player">
               <div class="player__photo">
                 <div class="photo">
-                  <div class="photo__fallback photo__fallback--ice" aria-hidden="true"><span>S</span></div>
-                  <img src="assets/img/barber-stef.jpg" alt="Stef, barber at Halftime Cuts" loading="lazy" decoding="async" onerror="this.remove()">
-                  <span class="player__num" aria-hidden="true">04</span>
+                  <div class="photo__fallback photo__fallback--ice" aria-hidden="true"><span>C</span></div>
+                  <img src="assets/img/barber-cameron.jpg" alt="Cameron, barber at Halftime Cuts" loading="lazy" decoding="async" onerror="this.remove()">
+                  <span class="player__num" data-num="04" aria-hidden="true"></span>
                 </div>
               </div>
               <div class="player__body">
-                <p class="player__role">Barber · Stylist</p>
-                <h3 class="player__name">Stef</h3>
-                <p class="player__bio">Detail-obsessed with serious technique — and great at making kids feel comfortable in the chair.</p>
-                <a class="link-arrow" href="https://www.halftimecuts.com/s/appointments?barber=stef" target="_blank" rel="noopener" data-book><span>Book with Stef</span><svg aria-hidden="true"><use href="#i-arrow-right"/></svg><span class="visually-hidden"> (opens in new tab)</span></a>
+                <p class="player__role">Barber</p>
+                <h3 class="player__name">Cameron</h3>
+                <p class="player__bio">High fades and beard trims, and clients say the vibe in his chair is on point.</p>
+                <a class="link-arrow" href="https://www.halftimecuts.com/s/appointments?barber=cameron" target="_blank" rel="noopener" data-book><span>Book with Cameron</span><svg aria-hidden="true"><use href="#i-arrow-right"/></svg><span class="visually-hidden"> (opens in new tab)</span></a>
+              </div>
+            </article>
+
+            <article class="player">
+              <div class="player__photo">
+                <div class="photo">
+                  <div class="photo__fallback photo__fallback--blue" aria-hidden="true"><span>K</span></div>
+                  <img src="assets/img/barber-kevin.jpg" alt="Kevin, barber at Halftime Cuts" loading="lazy" decoding="async" onerror="this.remove()">
+                  <span class="player__num" data-num="05" aria-hidden="true"></span>
+                </div>
+              </div>
+              <div class="player__body">
+                <p class="player__role">Barber</p>
+                <h3 class="player__name">Kevin</h3>
+                <p class="player__bio">Fades, tapers and beard work, done to the Halftime standard. Ask for Kevin when you book.</p>
+                <a class="link-arrow" href="https://www.halftimecuts.com/s/appointments?barber=kevin" target="_blank" rel="noopener" data-book><span>Book with Kevin</span><svg aria-hidden="true"><use href="#i-arrow-right"/></svg><span class="visually-hidden"> (opens in new tab)</span></a>
               </div>
             </article>
           </div>
@@ -618,8 +634,8 @@
           </li>
           <li class="review-card review-card--orange">
             <span class="stars" role="img" aria-label="5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
-            <p>“Robert is DA MAN!! Only my second visit — but I’ll be going to Robert for a long time.”</p>
-            <p class="review-card__by"><strong>Halftime client</strong><span>on Robert</span></p>
+            <p>“High fade and beard trim — outstanding service, and the vibe was on point. Highly recommend Cameron.”</p>
+            <p class="review-card__by"><strong>Halftime client</strong><span>on Cameron</span></p>
           </li>
           <li class="review-card">
             <span class="stars" role="img" aria-label="5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
@@ -628,11 +644,12 @@
           </li>
           <li class="review-card review-card--blue">
             <span class="stars" role="img" aria-label="5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
-            <p>“Got my cut by Stef and it was 10/10. Love her skill — I’ll be a consistent customer.”</p>
-            <p class="review-card__by"><strong>Halftime client</strong><span>on Stef</span></p>
+            <p>“Best haircut for the best price. Josh took his time and made sure I was happy with it.”</p>
+            <p class="review-card__by"><strong>Fernando M.</strong><span>on Josh</span></p>
           </li>
         </ul>
       </div>
+      <p class="reviews__hint wrap" aria-hidden="true"><span></span>Swipe for more reviews</p>
     </section>
 
     <!-- ============ HIGHLIGHT REEL (INSTAGRAM) ============ -->
@@ -756,7 +773,7 @@
           </details>
           <details class="faq__item" data-reveal>
             <summary><span class="faq__n" aria-hidden="true">03</span><span class="faq__q">Do you cut kids’ hair?</span><span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__a"><p>Yes. Kids cuts are available — you’ll see current pricing and open times when you book. Stef is a favorite with younger clients.</p></div>
+            <div class="faq__a"><p>Yes. Kids cuts are available — you’ll see current pricing and open times when you book.</p></div>
           </details>
           <details class="faq__item" data-reveal>
             <summary><span class="faq__n" aria-hidden="true">04</span><span class="faq__q">What are your hours?</span><span class="faq__icon" aria-hidden="true"></span></summary>
