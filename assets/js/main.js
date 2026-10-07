@@ -602,8 +602,14 @@
     });
   });
 
+  // Highlight reel: the photo grid is a mouse shortcut to Instagram (the "Follow us"
+  // button is the keyboard / screen-reader link, so the grid isn't a pile of duplicate links).
+  $$('[data-href]').forEach(function (grid) {
+    grid.addEventListener('click', function () { window.open(grid.getAttribute('data-href'), '_blank', 'noopener'); });
+  });
+
   // Handle letters bounce on hover.
-  var handle = $('.gram__title a');
+  var handle = $('.gram__title');
   if (handle && finePointer) {
     handle.addEventListener('mouseenter', function () {
       if (paused) return;

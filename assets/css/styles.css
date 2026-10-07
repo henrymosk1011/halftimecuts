@@ -540,6 +540,7 @@ button { font: inherit; color: inherit; }
   border: 0;
   border-radius: 50%;
   background: var(--blue);
+  color: var(--white);
   cursor: pointer;
 }
 .menu-toggle__bar {
@@ -846,7 +847,7 @@ a.scorebug__cell:hover { background: rgba(255, 255, 255, 0.06); }
 .scorebug a:focus-visible { outline-offset: -5px; border-radius: 12px; }
 .scorebug__cta:focus-visible { outline-color: var(--navy) !important; }
 .scorebug__label {
-  font-size: 0.64rem;
+  font-size: 0.7rem;
   font-weight: 800;
   font-stretch: 115%;
   letter-spacing: 0.16em;
@@ -916,7 +917,7 @@ a.scorebug__cell:hover { background: rgba(255, 255, 255, 0.06); }
   text-transform: uppercase;
 }
 .scorebug__cta small {
-  font-size: 0.64rem;
+  font-size: 0.7rem;
   font-style: normal;
   font-weight: 800;
   font-stretch: 115%;
@@ -1629,13 +1630,11 @@ html:not(.motion) .review-card { scroll-snap-align: center; }
   color: var(--blue);
 }
 .gram__title { container-type: inline-size; }
-.gram__title a {
+.gram__title > span {
   display: inline-block;
   font-size: min(13rem, calc(100cqi / 8.8));   /* "@halftimecuts" ≈ 8.3em wide when split into letters */
-  text-decoration: none;
-  transition: color 0.4s var(--ease);
 }
-.gram__title a:hover { color: var(--orange); }
+.gram__grid[data-href] { cursor: pointer; }
 .gram__row {
   display: flex;
   flex-wrap: wrap;
@@ -1776,7 +1775,7 @@ html:not(.motion) .review-card { scroll-snap-align: center; }
   border-radius: 4px;
   background: var(--orange);
   color: var(--navy);
-  font-size: 0.62rem;
+  font-size: 0.7rem;
   font-style: italic;
   font-weight: 900;
   letter-spacing: 0.1em;

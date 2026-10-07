@@ -25,7 +25,7 @@ Point `halftimecuts.com` at the host once it's live.
 
 | What | Where | Why |
 | --- | --- | --- |
-| **Square booking link** | Search `s/appointments` in `index.html` and `accessibility.html` | Right now these go to `https://www.halftimecuts.com/s/appointments`, which is the current Square Online site. **That page goes away when this site replaces it on the same domain.** In the Square Dashboard → Appointments → Online booking, copy the direct booking-site link (it looks like `https://book.squareup.com/appointments/…`) and find-and-replace it in both files. The search also catches the `ReserveAction` target in the structured data. |
+| **Square booking link** | Search `s/appointments` in `index.html` and `accessibility.html` | Right now these go to `https://www.halftimecuts.com/s/appointments`, which is the current Square Online site. **That page goes away when this site replaces it on the same domain.** In the Square Dashboard → Appointments → Online booking, copy the direct booking-site link (it looks like `https://book.squareup.com/appointments/…`) and find-and-replace just that base address in both files. The search also catches the `ReserveAction` target in the structured data. Each button keeps its short tag (`?service=haircut`, `?barber=josh`, `?ref=hero`), so every link stays distinct. That matters for accessibility checkers, and it shows which button people use. If Square gives you direct links for individual services or barbers, use those on the matching rows and cards. |
 | Instagram handle | Search `instagram.com/halftimecuts` | `@halftimecuts` matches the shop's Facebook and X handles but couldn't be verified directly. |
 | Hours | `.hours` table, footer, score bar, CTA copy, FAQ, `HOURS` in `assets/js/main.js`, JSON-LD | The current site says **Tue–Sat 9am–6pm** (closed Sun & Mon). Some directories still list Mon–Sat. |
 | Rating & review count | Score bar, box score, reviews header (search `4.9` and `370`) | Taken from public review aggregators. Match them to the Google Business Profile. |
@@ -42,7 +42,7 @@ Every photo slot has a designed fallback, so the site looks finished without pho
 | --- | --- | --- |
 | `shop.jpg` | "The Shop" arch | 1200 × 1560, portrait |
 | `barber-george.jpg`, `barber-josh.jpg`, `barber-robert.jpg`, `barber-stef.jpg` | Barber cards | 960 × 1200, portrait |
-| `ig-1.jpg` … `ig-6.jpg` | Instagram tiles | 800 × 1000, portrait |
+| `ig-1.jpg` … `ig-6.jpg` | Instagram tiles (decorative; clicking anywhere on the grid opens Instagram, and the "Follow us" button is the accessible link) | 800 × 1000, portrait |
 
 Compress images before uploading (for example with [Squoosh](https://squoosh.app)) and keep each under ~250 KB.
 
@@ -92,7 +92,19 @@ What's built in:
 
 ## Accessibility (ADA / WCAG 2.2 AA)
 
-The site targets **WCAG 2.2 Level AA**, the standard ADA website cases are measured against. It was tested with axe-core (0 violations at 320–1920px, with and without reduced motion), Lighthouse Accessibility 100, a scripted keyboard pass of every tab stop, 400% zoom (320px) and the WCAG text-spacing test.
+The site targets **WCAG 2.2 Level AA**, the standard ADA website cases are measured against. It was tested with:
+
+- axe-core: 0 violations at 320–1920px, with and without reduced motion.
+- Lighthouse Accessibility: 100.
+- A re-implementation of WAVE's checks: 0 errors, 0 contrast errors, 0 alerts.
+- A scripted keyboard pass of every tab stop.
+- 400% zoom (320px) and the WCAG text-spacing test.
+
+WAVE's AIM score counts *alerts* as well as errors. To keep it high:
+
+- Don't put several links to the same address next to each other.
+- Use real headings (`h2`/`h3`) for anything that looks like a heading.
+- Keep text above 10px.
 
 What's in place:
 
