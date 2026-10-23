@@ -229,6 +229,9 @@ button { font: inherit; color: inherit; }
   margin: -0.08em -0.12em -0.12em -0.02em;
 }
 .wi, .c { display: inline-block; will-change: transform; }
+/* Italic letters lean past their own box, and Safari clips each transformed piece to
+   that box, slicing the slant off. Pad the box over the overhang and pull the spacing back. */
+.wi, .c { padding-inline: 0.1em; margin-inline: -0.1em; }
 
 /* Counters (set up by JS): the real number stays put for screen readers and is
    clipped (never faded) while a decorative copy ticks up over it. */
