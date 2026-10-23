@@ -2000,6 +2000,8 @@ html:not(.motion) .review-card { scroll-snap-align: center; }
 .footer__legal a { display: inline-block; padding-block: 4px; text-decoration: none; }
 .footer__legal { align-items: center; }
 .footer__legal a:hover { color: var(--navy); }
+/* The credit link sits inside running text, so it needs an underline, not just color. */
+.footer__credit a { text-decoration: underline; text-underline-offset: 3px; }
 .footer__top::after { content: "↑"; content: "↑" / ""; margin-left: 0.35em; }
 @media (max-width: 899px) { .footer__legal { padding-bottom: calc(100px + env(safe-area-inset-bottom)); } }
 
