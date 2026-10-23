@@ -77,9 +77,13 @@
 
   <footer class="footer footer--simple">
     <div class="wrap footer__legal">
-      <p>© 2026 Halftime Cuts · 3205 E Foothill Blvd, Pasadena, CA 91107 · <a href="tel:+16267964253">(626) 796-4253</a></p>
+      <p>© <span data-year>2026</span> Halftime Cuts · 3205 E Foothill Blvd, Pasadena, CA 91107 · <a href="tel:+16267964253">(626) 796-4253</a> · <span class="footer__credit">Designed by TENELEVENMEDIA</span></p>
       <a href="./">Home</a>
     </div>
   </footer>
+  <script>
+    // This page doesn't load main.js, so keep the copyright year current here.
+    document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = String(new Date().getFullYear()); });
+  </script>
 </body>
 </html>

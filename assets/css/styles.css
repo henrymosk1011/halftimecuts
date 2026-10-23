@@ -1996,6 +1996,7 @@ html:not(.motion) .review-card { scroll-snap-align: center; }
   color: var(--muted);
 }
 .footer__legal p { margin: 0; }
+.footer__credit { white-space: nowrap; }
 .footer__legal a { display: inline-block; padding-block: 4px; text-decoration: none; }
 .footer__legal { align-items: center; }
 .footer__legal a:hover { color: var(--navy); }
