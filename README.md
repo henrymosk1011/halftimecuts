@@ -14,12 +14,24 @@ Then open http://localhost:8080.
 
 ## Deploy
 
-Upload the repo contents to any static host:
+The site is hosted on **GitHub Pages** (deployed from this branch, root folder) behind **Cloudflare**:
 
-- **GitHub Pages**: Settings → Pages → deploy from branch, root folder.
-- **Netlify / Vercel / Cloudflare Pages**: import the repo. Leave the build command empty and set the output directory to `/`.
-
-Point `halftimecuts.com` at the host once it's live.
+- `CNAME` in the repo root tells GitHub Pages to serve `www.halftimecuts.com`. Don't delete it.
+- The domain is registered at Network Solutions, with nameservers pointed at Cloudflare.
+- Cloudflare DNS (zone `halftimecuts.com`):
+  - `halftimecuts.com`: four A records to GitHub Pages (`185.199.108.153`–`185.199.111.153`), proxied.
+  - `www`: CNAME to `henrymosk1011.github.io`, proxied.
+  - Email (Network Solutions mail): MX, SPF TXT, `mail`/`smtp`/`autodiscover` CNAMEs and the autodiscover SRV. These are **DNS only** (grey cloud). Proxying them breaks email.
+- Cloudflare settings:
+  - SSL/TLS mode **Full**.
+  - Always Use HTTPS on.
+  - Minimum TLS 1.2.
+  - Rocket Loader off.
+  - Email Address Obfuscation off.
+- Cloudflare redirect rules:
+  - `/s/appointments*` (the old Square Online booking page) goes to the Square booking site.
+  - `halftimecuts.com` goes to `https://www.halftimecuts.com`.
+- After an update, if a change doesn't show up, use Cloudflare → Caching → **Purge Everything**.
 
 ## Before launch: things to confirm with the shop
 
