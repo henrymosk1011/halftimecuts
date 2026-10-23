@@ -15,7 +15,7 @@
 
   var SHOP_TZ = 'America/Los_Angeles';
   // Minutes from midnight, keyed by JS weekday (0 = Sunday).
-  var HOURS = { 2: [540, 1080], 3: [540, 1080], 4: [540, 1080], 5: [540, 1080], 6: [540, 1080] };
+  var HOURS = { 1: [540, 1080], 2: [540, 1080], 3: [540, 1080], 4: [540, 1080], 5: [540, 1080], 6: [540, 1080] };
   var DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
   var paused = root.classList.contains('is-paused');

@@ -1556,7 +1556,6 @@ a.scorebug__cell:hover { background: rgba(255, 255, 255, 0.06); }
   text-transform: uppercase;
 }
 .feature-quote figcaption span:last-child { color: var(--muted); }
-.feature-quote figcaption span:last-child::before { content: "— "; }
 
 .reviews__marquee {
   position: relative;

@@ -1,7 +1,7 @@
 {
-  "name": "Halftime Cuts — Barbershop in Pasadena, CA",
+  "name": "Halftime Cuts | Barbershop in Pasadena, CA",
   "short_name": "Halftime Cuts",
-  "description": "East Pasadena’s sports barbershop since 2005. Fades, tapers, kids cuts, beard trims and hot towel shaves.",
+  "description": "East Pasadena’s barbershop since 2005. Fades, tapers, kids cuts, beard trims and hot towel shaves.",
   "start_url": "./",
   "scope": "./",
   "display": "browser",
